@@ -43,8 +43,11 @@ public static class DependencyInjection
         // IAppDbContext mapping
         services.AddScoped<IAppDbContext>(sp => sp.GetRequiredService<DatabaseContext>());
 
-    // Identity hasher (use domain User)
-    services.AddScoped<IPasswordHasher<Market.Domain.Entities.Identity.User>, PasswordHasher<Market.Domain.Entities.Identity.User>>();
+        // Identity hasher (use domain User)
+        services.AddScoped<
+            IPasswordHasher<Market.Domain.Entities.Identity.User>,
+            PasswordHasher<Market.Domain.Entities.Identity.User>
+        >();
 
         // Token service (reads JwtOptions via IOptions<JwtOptions>)
         services.AddTransient<IJwtTokenService, JwtTokenService>();

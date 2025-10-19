@@ -10,3 +10,4 @@ C:\Users\Amer\Desktop\RS1-Seminarski\Market.Backend\Market.Domain\obj\Debug\net8
 C:\Users\Amer\Desktop\RS1-Seminarski\Market.Backend\Market.Domain\obj\Debug\net8.0\refint\Market.Domain.dll
 C:\Users\Amer\Desktop\RS1-Seminarski\Market.Backend\Market.Domain\obj\Debug\net8.0\Market.Domain.pdb
 C:\Users\Amer\Desktop\RS1-Seminarski\Market.Backend\Market.Domain\obj\Debug\net8.0\ref\Market.Domain.dll
+C:\Users\Amer\Desktop\RS1-Seminarski\Market.Backend\Market.Domain\obj\Debug\net8.0\Market.Domain.sourcelink.json

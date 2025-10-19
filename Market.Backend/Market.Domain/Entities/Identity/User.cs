@@ -21,6 +21,7 @@ public class User : BaseEntity
     public string? Address { get; set; }
     public bool IsVerified { get; set; } = false;
     public bool IsActive { get; set; } = true;
+
     // Backwards-compatible flag expected by Application
     public bool IsEnabled { get; set; } = true;
 

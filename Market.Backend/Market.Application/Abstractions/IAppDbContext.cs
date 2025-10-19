@@ -18,19 +18,11 @@ public interface IAppDbContext
     DbSet<Review> Reviews { get; }
     DbSet<Inventory> Inventories { get; }
     DbSet<Ingredient> Ingredients { get; }
-    
-    // Backwards-compatible Product entities (some Application modules still use these)
-    DbSet<ProductCategoryEntity> ProductCategories { get; }
-    DbSet<ProductEntity> Products { get; }
 
     // Identity
     DbSet<User> Users { get; }
     DbSet<Employee> Employees { get; }
     DbSet<RefreshTokenEntity> RefreshTokens { get; }
     DbSet<UserFavorite> UserFavorites { get; }
-    
-    // Legacy-styled users used by some Application modules
-    DbSet<MarketUserEntity> MarketUsers { get; }
-
     Task<int> SaveChangesAsync(CancellationToken ct);
 }

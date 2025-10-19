@@ -19,3 +19,4 @@ C:\Users\Amer\Desktop\RS1-Seminarski\Market.Backend\Market.Infrastructure\obj\De
 C:\Users\Amer\Desktop\RS1-Seminarski\Market.Backend\Market.Infrastructure\obj\Debug\net8.0\Market.Infrastructure.pdb
 C:\Users\Amer\Desktop\RS1-Seminarski\Market.Backend\Market.Infrastructure\obj\Debug\net8.0\Market.Infrastructure.genruntimeconfig.cache
 C:\Users\Amer\Desktop\RS1-Seminarski\Market.Backend\Market.Infrastructure\obj\Debug\net8.0\ref\Market.Infrastructure.dll
+C:\Users\Amer\Desktop\RS1-Seminarski\Market.Backend\Market.Infrastructure\obj\Debug\net8.0\Market.Infrastructure.sourcelink.json

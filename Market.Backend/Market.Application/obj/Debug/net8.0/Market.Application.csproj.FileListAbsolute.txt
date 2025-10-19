@@ -15,3 +15,4 @@ C:\Users\Amer\Desktop\RS1-Seminarski\Market.Backend\Market.Application\obj\Debug
 C:\Users\Amer\Desktop\RS1-Seminarski\Market.Backend\Market.Application\obj\Debug\net8.0\refint\Market.Application.dll
 C:\Users\Amer\Desktop\RS1-Seminarski\Market.Backend\Market.Application\obj\Debug\net8.0\Market.Application.pdb
 C:\Users\Amer\Desktop\RS1-Seminarski\Market.Backend\Market.Application\obj\Debug\net8.0\ref\Market.Application.dll
+C:\Users\Amer\Desktop\RS1-Seminarski\Market.Backend\Market.Application\obj\Debug\net8.0\Market.Application.sourcelink.json

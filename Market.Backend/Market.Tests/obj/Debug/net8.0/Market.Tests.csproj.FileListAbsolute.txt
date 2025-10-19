@@ -485,3 +485,4 @@ C:\Users\Amer\Desktop\RS1-Seminarski\Market.Backend\Market.Tests\obj\Debug\net8.
 C:\Users\Amer\Desktop\RS1-Seminarski\Market.Backend\Market.Tests\obj\Debug\net8.0\Market.Tests.genruntimeconfig.cache
 C:\Users\Amer\Desktop\RS1-Seminarski\Market.Backend\Market.Tests\obj\Debug\net8.0\ref\Market.Tests.dll
 C:\Users\Amer\Desktop\RS1-Seminarski\Market.Backend\Market.Tests\bin\Debug\net8.0\Ulid.dll
+C:\Users\Amer\Desktop\RS1-Seminarski\Market.Backend\Market.Tests\obj\Debug\net8.0\Market.Tests.sourcelink.json

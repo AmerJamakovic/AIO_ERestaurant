@@ -458,3 +458,4 @@ C:\Users\Amer\Desktop\RS1-Seminarski\Market.Backend\Market.API\obj\Debug\net8.0\
 C:\Users\Amer\Desktop\RS1-Seminarski\Market.Backend\Market.API\obj\Debug\net8.0\Market.API.genruntimeconfig.cache
 C:\Users\Amer\Desktop\RS1-Seminarski\Market.Backend\Market.API\obj\Debug\net8.0\ref\Market.API.dll
 C:\Users\Amer\Desktop\RS1-Seminarski\Market.Backend\Market.API\bin\Debug\net8.0\Ulid.dll
+C:\Users\Amer\Desktop\RS1-Seminarski\Market.Backend\Market.API\obj\Debug\net8.0\Market.API.sourcelink.json
