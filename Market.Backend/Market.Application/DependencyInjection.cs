@@ -1,6 +1,6 @@
-﻿using Market.Application.Common.Behaviors;
+﻿using System.Reflection;
+using Market.Application.Common.Behaviors;
 using Microsoft.Extensions.DependencyInjection;
-using System.Reflection;
 
 namespace Market.Application;
 
