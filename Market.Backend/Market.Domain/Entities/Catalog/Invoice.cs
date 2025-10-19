@@ -26,5 +26,5 @@ public class Invoice : BaseEntity
     [ForeignKey("PromoCodeId")]
     public PromoCode? PromoCode { get; set; }
 
-    public DateTime? PaymentDate { get; set; }
+    public DateTime PaymentDate { get; set; } = DateTime.UtcNow;
 }

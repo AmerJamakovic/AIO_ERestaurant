@@ -1,7 +1,4 @@
 ﻿using Market.Application.Abstractions;
-using Market.Domain.Entities.Catalog;
-using Market.Domain.Entities.Identity;
-using Microsoft.EntityFrameworkCore;
 
 namespace Market.Infrastructure.Database;
 
@@ -20,7 +17,7 @@ public partial class DatabaseContext : DbContext, IAppDbContext
     public DbSet<Ingredient> Ingredients => Set<Ingredient>();
 
     // Identity entities
-    public DbSet<User> Users => Set<User>();
+    public DbSet<Customer> Customers => Set<Customer>();
     public DbSet<Employee> Employees => Set<Employee>();
     public DbSet<RefreshTokenEntity> RefreshTokens => Set<RefreshTokenEntity>();
     public DbSet<UserFavorite> UserFavorites => Set<UserFavorite>();

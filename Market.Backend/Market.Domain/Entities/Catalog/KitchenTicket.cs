@@ -10,7 +10,7 @@ public class KitchenTicket : BaseEntity
     public required string OrderItemId { get; set; }
 
     [ForeignKey("OrderItemId")]
-    public OrderItem? OrderItem { get; set; }
+    public required OrderItem OrderItem { get; set; }
 
     [Required]
     public TicketDestinationEnum Destination { get; set; }

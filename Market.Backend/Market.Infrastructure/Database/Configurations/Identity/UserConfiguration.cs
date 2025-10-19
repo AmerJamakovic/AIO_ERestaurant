@@ -1,12 +1,8 @@
-using Market.Domain.Entities.Identity;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-
 namespace Market.Infrastructure.Database.Configurations.Identity;
 
-public sealed class UserConfiguration : IEntityTypeConfiguration<User>
+public sealed class UserConfiguration : IEntityTypeConfiguration<Customer>
 {
-    public void Configure(EntityTypeBuilder<User> b)
+    public void Configure(EntityTypeBuilder<Customer> b)
     {
         // Table name
         b.ToTable("Users");

@@ -2,5 +2,6 @@
 
 public sealed class MarketConflictException : Exception
 {
-    public MarketConflictException(string message) : base(message) { }
+    public MarketConflictException(string message)
+        : base(message) { }
 }

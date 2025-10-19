@@ -1,5 +1,6 @@
 public enum RoleEnum
 {
+    NOT_ASSIGNED,
     ADMIN,
     EMPLOYEE,
     CUSTOMER,
@@ -49,7 +50,9 @@ public enum PaymentMethodEnum
 public enum PaymentStatusEnum
 {
     PAID,
+    CANCELED,
     PENDING,
+    WAITING,
     REFUNDED,
 }
 
@@ -70,4 +73,22 @@ public enum DiscountTypeEnum
 {
     PERCENTAGE,
     FIXED_AMOUNT,
+}
+
+public enum AllergenTypeEnum
+{
+    NONE,
+    MILK,
+    FISH,
+    SOYBEANS,
+    WHEAT,
+}
+
+public enum OrderSourceEnum
+{
+    ONLINE, // Customer only
+    PHONE, // Employee & customer
+    DINE_IN, // Employee & table
+    TAKEAWAY, // Employee or customer
+    DELIVERY, // Customer only with address
 }

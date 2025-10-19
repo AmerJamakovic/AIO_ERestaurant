@@ -20,7 +20,7 @@ public interface IAppDbContext
     DbSet<Ingredient> Ingredients { get; }
 
     // Identity
-    DbSet<User> Users { get; }
+    DbSet<Customer> Customers { get; }
     DbSet<Employee> Employees { get; }
     DbSet<RefreshTokenEntity> RefreshTokens { get; }
     DbSet<UserFavorite> UserFavorites { get; }

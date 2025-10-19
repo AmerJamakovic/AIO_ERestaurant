@@ -1,7 +1,6 @@
 ﻿using System.Linq.Expressions;
 using Market.Domain.Common;
 using Market.Infrastructure.Database.Seeders;
-using Microsoft.EntityFrameworkCore;
 
 namespace Market.Infrastructure.Database;
 

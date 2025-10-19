@@ -8,13 +8,13 @@ using Market.Domain.Entities.Catalog;
 public class UserFavorite : BaseEntity
 {
     [Required]
-    public required string UserId { get; set; }
+    public required string CustomerId { get; set; }
 
     [Required]
     public required string MenuItemId { get; set; }
 
-    [ForeignKey("UserId")]
-    public required User User { get; set; }
+    [ForeignKey("CustomerId")]
+    public required Customer Customer { get; set; }
 
     [ForeignKey("MenuItemId")]
     public required MenuItem MenuItem { get; set; }

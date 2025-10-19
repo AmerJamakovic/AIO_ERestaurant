@@ -7,5 +7,6 @@ public class MenuGroup : BaseEntity
 {
     [Required]
     public required string Name { get; set; }
+
     public string? Description { get; set; }
 }

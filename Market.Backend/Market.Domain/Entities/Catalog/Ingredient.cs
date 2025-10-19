@@ -7,5 +7,5 @@ public class Ingredient : BaseEntity
 {
     [Required]
     public required string Name { get; set; }
-    public bool IsAllergen { get; set; } = false;
+    public AllergenTypeEnum AllergenType { get; set; } = AllergenTypeEnum.NONE;
 }

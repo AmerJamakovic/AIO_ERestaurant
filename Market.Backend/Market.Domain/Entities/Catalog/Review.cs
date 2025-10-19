@@ -11,7 +11,7 @@ public class Review : BaseEntity
     public required string CustomerId { get; set; }
 
     [ForeignKey("CustomerId")]
-    public required User Customer { get; set; }
+    public required Customer Customer { get; set; }
 
     public string? MenuItemId { get; set; }
 

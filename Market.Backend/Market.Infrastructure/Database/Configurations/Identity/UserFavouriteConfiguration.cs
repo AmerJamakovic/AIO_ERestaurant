@@ -1,7 +1,3 @@
-using Market.Domain.Entities.Identity;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-
 namespace Market.Infrastructure.Database.Configurations.Identity;
 
 public sealed class UserFavoriteConfiguration : IEntityTypeConfiguration<UserFavorite>
@@ -11,12 +7,12 @@ public sealed class UserFavoriteConfiguration : IEntityTypeConfiguration<UserFav
         b.ToTable("UserFavorites");
 
         // Composite key
-        b.HasKey(x => new { x.UserId, x.MenuItemId });
+        b.HasKey(x => new { x.CustomerId, x.MenuItemId });
 
         // Relationships
-        b.HasOne(x => x.User)
+        b.HasOne(x => x.Customer)
             .WithMany()
-            .HasForeignKey(x => x.UserId)
+            .HasForeignKey(x => x.CustomerId)
             .OnDelete(DeleteBehavior.Cascade);
 
         b.HasOne(x => x.MenuItem)

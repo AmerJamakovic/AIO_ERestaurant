@@ -1,7 +1,3 @@
-using Market.Domain.Entities.Identity;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-
 namespace Market.Infrastructure.Database.Configurations.Identity;
 
 public sealed class EmployeeConfiguration : IEntityTypeConfiguration<Employee>
@@ -11,13 +7,6 @@ public sealed class EmployeeConfiguration : IEntityTypeConfiguration<Employee>
         b.ToTable("Employees");
 
         b.HasKey(x => x.Id);
-
-        b.Property(x => x.UserId).IsRequired();
-
-        b.HasOne(x => x.User)
-            .WithMany()
-            .HasForeignKey(x => x.UserId)
-            .OnDelete(DeleteBehavior.Restrict);
 
         b.Property(x => x.JobTitle).IsRequired().HasConversion<string>().HasMaxLength(50);
 

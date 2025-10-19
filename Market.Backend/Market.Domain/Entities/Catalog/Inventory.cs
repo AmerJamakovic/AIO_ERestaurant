@@ -3,7 +3,6 @@ namespace Market.Domain.Entities.Catalog;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Market.Domain.Common;
-using Market.Domain.Entities.Identity;
 
 public class Inventory : BaseEntity
 {

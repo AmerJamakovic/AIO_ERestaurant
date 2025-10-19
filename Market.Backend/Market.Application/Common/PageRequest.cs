@@ -9,7 +9,11 @@ public sealed class PageRequest
     public int PageSize
     {
         get => _pageSize;
-        init => _pageSize = value <= 0 ? 10 : value > MaxPageSize ? MaxPageSize : value;
+        init =>
+            _pageSize =
+                value <= 0 ? 10
+                : value > MaxPageSize ? MaxPageSize
+                : value;
     }
 
     public int SkipCount => (Page - 1) * PageSize;

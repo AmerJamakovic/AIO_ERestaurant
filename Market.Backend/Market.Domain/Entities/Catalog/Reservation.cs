@@ -12,12 +12,13 @@ public class Reservation : BaseEntity
     public required string CustomerId { get; set; }
 
     [ForeignKey("CustomerId")]
-    public User? Customer { get; set; } //Potential problem
+    public required Customer Customer { get; set; }
 
-    public string? TableId { get; set; }
+    [Required]
+    public required string TableId { get; set; }
 
-    [ForeignKey("TableId")]
-    public RestaurantTable? Table { get; set; } //Radnom assigned table for now
+    [ForeignKey("TableId"), Required]
+    public required RestaurantTable Table { get; set; }
 
     [Required]
     public DateTime ReservationDate { get; set; }
