@@ -27,7 +27,7 @@ namespace Market.Infrastructure.Migrations
                 {
                     table.PrimaryKey("PK_Ingredients", x => x.Id);
                 });
-
+            
             migrationBuilder.CreateTable(
                 name: "MarketUsers",
                 columns: table => new

@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Market.Application.Modules.Identity.Employees.Commands
+﻿namespace Market.Application.Modules.Identity.Employees.Commands
 {
-    internal class CreateEmployeeCommand
+    public class CreateEmployeeCommand : IRequest<string>
     {
+        public required JobTitleEnum JobTitle { get; set; }
+        public DateTime? BirthDate { get; set; }
+        public DateTime? HireDate { get; set; }
+        public int YearsOfExperience { get; set; } = 0;
     }
 }
