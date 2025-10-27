@@ -1,4 +1,4 @@
-﻿namespace Market.Application.Modules.Identity.Employees.Commands
+﻿namespace Market.Application.Modules.Identity.Employees.Commands.Create
 {
     public class CreateEmployeeCommand : IRequest<string>
     {

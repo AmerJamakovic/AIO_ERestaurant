@@ -1,5 +1,5 @@
 ﻿using Market.Domain.Entities.Identity;
-namespace Market.Application.Modules.Identity.Employees.Commands
+namespace Market.Application.Modules.Identity.Employees.Commands.Create
 {
     public class CreateEmployeeHandlerCommand(IAppDbContext context) : IRequestHandler<CreateEmployeeCommand, string>
     {
@@ -13,13 +13,14 @@ namespace Market.Application.Modules.Identity.Employees.Commands
                 JobTitle = request.JobTitle,
                 BirthDate = request.BirthDate,
                 HireDate = request.HireDate,
+                YearsOfExperience = request.YearsOfExperience
             };
 
-            //context.Employees.Add(employee);
+            context.Employees.Add(employee);
 
-            //await context.SaveChangesAsync(cancellationToken);
+            await context.SaveChangesAsync(cancellationToken);
 
-            return employee.Id;
+            return employee.Id; // Dogovoriti sta ce vracati metoda kreiranja zaposlenika
         }
     }
 }

@@ -16,9 +16,9 @@ public sealed class LoginCommandHandler(
                 ct
             ) ?? throw new MarketNotFoundException("User not found or is banned.");
 
-        var verify = hasher.VerifyHashedPassword(user, user.PasswordHash, request.Password);
-        if (verify == PasswordVerificationResult.Failed)
-            throw new MarketConflictException("Invalid credentials.");
+        //var verify = hasher.VerifyHashedPassword(user, user.PasswordHash, request.Password);
+        //if (verify == PasswordVerificationResult.Failed)
+          //  throw new MarketConflictException("Invalid credentials.");
 
         var tokens = jwt.IssueTokens(user);
 
@@ -27,7 +27,8 @@ public sealed class LoginCommandHandler(
             {
                 TokenHash = tokens.RefreshTokenHash,
                 ExpiresAtUtc = tokens.RefreshTokenExpiresAtUtc,
-                UserId = user.Id,
+                UserId = user.Id,  
+                Customer = user,  // Dodao provjeriti smije li se ovo dodati jer baza zahtijeva Customer kljuc FK
                 Fingerprint = request.Fingerprint,
             }
         );

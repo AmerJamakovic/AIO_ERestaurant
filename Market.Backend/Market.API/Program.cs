@@ -1,6 +1,8 @@
 ﻿using Market.API;
 using Market.Application;
+using Market.Domain.Entities.Identity;
 using Market.Infrastructure;
+using Microsoft.AspNetCore.Identity;
 
 public partial class Program
 {
@@ -15,6 +17,32 @@ public partial class Program
             .AddApplication();
 
         var app = builder.Build();
+
+        using (var scope = app.Services.CreateScope())
+        {
+            var hasher = scope.ServiceProvider.GetRequiredService<IPasswordHasher<Customer>>();
+
+            // LOZINKA koju želite da hashirate (isto kao u Swaggeru: "Muhamed2016!")
+            const string rawPassword = "Muhamed2016!";
+
+            // Kreiranje hasha
+            var testUser = new Customer
+            {
+                FirstName = "Muhamed",
+                LastName = "DFGUHDSU",
+                Email = "dd",
+                PasswordHash = rawPassword,
+
+            }; // Morate proslijediti instancu korisnika
+            var hashedPassword = hasher.HashPassword(testUser, rawPassword);
+
+            // ISPIS HASHA U KONZOLU
+            Console.WriteLine("--------------------------------------------------------------------------");
+            Console.WriteLine($"Raw Password: {rawPassword}");
+            Console.WriteLine($"GENERATED HASH: {hashedPassword}");
+            Console.WriteLine("--------------------------------------------------------------------------");
+        }
+
 
         // Middleware pipeline
         if (app.Environment.IsDevelopment())

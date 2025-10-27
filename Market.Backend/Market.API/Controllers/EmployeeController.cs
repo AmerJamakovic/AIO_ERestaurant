@@ -1,4 +1,4 @@
-﻿using Market.Application.Modules.Identity.Employees.Commands;
+﻿using Market.Application.Modules.Identity.Employees.Commands.Create;
 
 namespace Market.API.Controllers
 {
