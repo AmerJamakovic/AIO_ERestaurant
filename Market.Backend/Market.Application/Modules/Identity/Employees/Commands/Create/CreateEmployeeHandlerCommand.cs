@@ -16,7 +16,7 @@
             {
                 if (request.HireDate.Value.Year > DateTime.Now.Year)
                 {
-                    throw new Exception("Invalid.");
+                    throw new Exception("Invalid input.");
                 }
             }
 
@@ -50,12 +50,10 @@
                 BirthDate = request.BirthDate,
                 HireDate = request.HireDate,
                 YearsOfExperience = request.YearsOfExperience,
-                PasswordHash = hasher.HashPassword(null, request.Password)
+                PasswordHash = hasher.HashPassword(null!, request.Password)
             };
 
             return employee;
         }
-
-
     }
 }

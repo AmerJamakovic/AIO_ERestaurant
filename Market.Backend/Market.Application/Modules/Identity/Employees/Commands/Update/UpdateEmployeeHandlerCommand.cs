@@ -1,4 +1,6 @@
-﻿namespace Market.Application.Modules.Identity.Employees.Commands.Update
+﻿using Market.Domain.Entities.Identity;
+
+namespace Market.Application.Modules.Identity.Employees.Commands.Update
 {
     public class UpdateEmployeeHandlerCommand(IAppDbContext context) : IRequestHandler<UpdateEmployeeCommand, Employee>
     {
@@ -13,24 +15,24 @@
 
             else if ((int)request.JobTitle > 5) // Checks if the user provide invalid role option
             {
-                throw new Exception("Invalid role option!");
+                throw new Exception("Invalid input.");
             }
 
             else if (request.YearsOfExperience < 0) // Checks value in case that the user maybe provide negative value
-                throw new Exception("Invalid input for years of experience, needs to be positive.");
+                throw new Exception("Invalid input.");
 
             else if (request.HireDate is not null)
             {
                 if (request.HireDate.Value.Year > DateTime.Now.Year) // Checks if the user provide a year that is in the future
                 {
-                    throw new Exception("Invalid input for years of experience, needs to be positive.");
+                    throw new Exception("Invalid input.");
                 }
             }
             else if (request.BirthDate is not null) 
             {
                 if (request.BirthDate.Value.Year < 1900) // Checks if the user provide a birth year older than 1900.
                 {
-                    throw new Exception("Invalid input for years of experience, needs to be positive.");
+                    throw new Exception("Invalid input.");
                 }
             }
 
@@ -40,13 +42,32 @@
             if (employee is null)
                 throw new MarketNotFoundException("Employee is not found..");
 
+            var hasher = new PasswordHasher<UserBaseEntity>();
+
+            employee = UpdateEmployeeProperties(employee, request, hasher);
+
+            context.Employees.Update(employee);
+
+            await context.SaveChangesAsync(ct);
+
+            return employee;
+        }
+
+        public Employee UpdateEmployeeProperties(Employee employee, UpdateEmployeeCommand request, PasswordHasher<UserBaseEntity> hasher)
+        {
+            if (!string.IsNullOrWhiteSpace(request.FirstName))
+                employee.FirstName = request.FirstName.Trim();
+            if (!string.IsNullOrWhiteSpace(request.LastName))
+                employee.LastName = request.LastName.Trim();
+            if (!string.IsNullOrWhiteSpace(request.Email))
+                employee.Email = request.Email.Trim();
+            //if (!string.IsNullOrWhiteSpace(request.Password))  
+            //    employee.PasswordHash = hasher.HashPassword(employee, request.Password);   Should be implemented 
 
             employee.JobTitle = request.JobTitle;
             employee.BirthDate = request.BirthDate;
             employee.HireDate = request.HireDate;
             employee.YearsOfExperience = request.YearsOfExperience;
-
-            await context.SaveChangesAsync(ct);
 
             return employee;
         }
