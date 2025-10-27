@@ -2,7 +2,7 @@ namespace Market.Domain.Entities.Identity;
 using System.ComponentModel.DataAnnotations;
 using Market.Domain.Common;
 
-public class Employee : BaseEntity
+public class Employee : UserBaseEntity
 {
     [Required]
     public JobTitleEnum JobTitle { get; set; }

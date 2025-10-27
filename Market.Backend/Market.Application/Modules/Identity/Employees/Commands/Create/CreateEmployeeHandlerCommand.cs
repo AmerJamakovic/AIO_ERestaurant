@@ -1,19 +1,16 @@
-﻿using Market.Domain.Entities.Identity;
-namespace Market.Application.Modules.Identity.Employees.Commands.Create
+﻿namespace Market.Application.Modules.Identity.Employees.Commands.Create
 {
     public class CreateEmployeeHandlerCommand(IAppDbContext context) : IRequestHandler<CreateEmployeeCommand, Employee>
     {
         public async Task<Employee> Handle(CreateEmployeeCommand request, CancellationToken ct)
         {
-            // Dodati logiku za provjeru i validnost prije samog dodavanja.. 
-            // Beta verzija
-
-                //request.BirthDate.Value.Year == 2025  too young
-
-            // should add Jobtitle validation..
-
             if (request.YearsOfExperience < 0) // Checks value in case that user maybe provide negative value
-                throw new Exception("Invalid input for years of experience, needs to be positive.");
+                throw new Exception("Invalid input.");
+
+            else if ((int)request.JobTitle > 5)
+            {
+                throw new Exception("Invalid input.");
+            }
 
             else if (request.HireDate is not null) // Checks if user provide year that is in the future
             {
@@ -22,31 +19,43 @@ namespace Market.Application.Modules.Identity.Employees.Commands.Create
                     throw new Exception("Invalid.");
                 }
             }
+
             else if (request.BirthDate is not null) // Checks if user provide year that is in the future
             {
-                if (request.BirthDate.Value.Year < 1900)
+                if (request.BirthDate.Value.Year < 1900 || request.YearsOfExperience > (DateTime.Now.Year - request.BirthDate.Value.Year))
                 {
-                    throw new Exception("Invalid.");
+                    throw new Exception("Invalid input.");
                 }
             }
 
-
-            // dodati vrijednosti bazne..
-
-            var employee = new Employee
-            {
-                JobTitle = request.JobTitle,
-                BirthDate = request.BirthDate,
-                HireDate = request.HireDate,
-                YearsOfExperience = request.YearsOfExperience
-            };
+            var employee = CreateEmployee(request);
 
             context.Employees.Add(employee);
 
             await context.SaveChangesAsync(ct);
 
-            return employee; // Dogovoriti sta ce vracati metoda kreiranja zaposlenika
-            // VRATIT OBJEKAT!
+            return employee;  
         }
+
+        public Employee CreateEmployee(CreateEmployeeCommand request)
+        {
+            var hasher = new PasswordHasher<UserBaseEntity>();
+
+            var employee = new Employee
+            {
+                FirstName = request.FirstName,
+                LastName = request.LastName,
+                Email = request.Email,
+                JobTitle = request.JobTitle,
+                BirthDate = request.BirthDate,
+                HireDate = request.HireDate,
+                YearsOfExperience = request.YearsOfExperience,
+                PasswordHash = hasher.HashPassword(null, request.Password)
+            };
+
+            return employee;
+        }
+
+
     }
 }

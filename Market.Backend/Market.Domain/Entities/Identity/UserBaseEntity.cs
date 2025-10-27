@@ -1,9 +1,8 @@
 namespace Market.Domain.Entities.Identity;
-
 using System.ComponentModel.DataAnnotations;
 using Market.Domain.Common;
 
-public class UserBaseEntity : BaseEntity
+public abstract class UserBaseEntity : BaseEntity
 {
     [Required]
     public required string FirstName { get; set; }
@@ -17,7 +16,7 @@ public class UserBaseEntity : BaseEntity
     [Required]
     public required string PasswordHash { get; set; }
 
-    public bool IsVerified { get; set; } = false;
+    public bool IsVerified { get; set; } = true;
     public int TokenVersion { get; set; }
 
     [Required]
