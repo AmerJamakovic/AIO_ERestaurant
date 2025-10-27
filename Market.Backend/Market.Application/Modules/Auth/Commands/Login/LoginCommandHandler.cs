@@ -14,7 +14,7 @@ public sealed class LoginCommandHandler(
             await ctx.Customers.FirstOrDefaultAsync(
                 x => x.Email.ToLower() == email && x.IsActive && !x.IsDeleted,
                 ct
-            ) ?? throw new MarketNotFoundException("User not found or is banned.");
+            ) ?? throw new MarketNotFoundException("User not found or is banned."); // dodati i za employee
 
         //var verify = hasher.VerifyHashedPassword(user, user.PasswordHash, request.Password);
         //if (verify == PasswordVerificationResult.Failed)
@@ -28,7 +28,7 @@ public sealed class LoginCommandHandler(
                 TokenHash = tokens.RefreshTokenHash,
                 ExpiresAtUtc = tokens.RefreshTokenExpiresAtUtc,
                 UserId = user.Id,  
-                Customer = user,  // Dodao provjeriti smije li se ovo dodati jer baza zahtijeva Customer kljuc FK
+                Customer = user,
                 Fingerprint = request.Fingerprint,
             }
         );

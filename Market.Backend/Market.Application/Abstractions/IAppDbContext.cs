@@ -16,7 +16,7 @@ public interface IAppDbContext
     DbSet<Reservation> Reservations { get; }
     DbSet<PromoCode> PromoCodes { get; }
     DbSet<Review> Reviews { get; }
-    DbSet<Inventory> Inventories { get; }
+    DbSet<Inventory> Inventories { get; } 
     DbSet<Ingredient> Ingredients { get; }
 
     // Identity

@@ -24,8 +24,4 @@
     <ProjectReference Include="..\Market.Shared\Market.Shared.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Modules\Identity\Employees\Queries\" />
-  </ItemGroup>
-
 </Project>

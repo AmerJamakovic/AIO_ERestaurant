@@ -1,4 +1,5 @@
 ﻿using Market.Application.Modules.Identity.Employees.Commands.Create;
+using Market.Domain.Entities.Identity;
 
 namespace Market.API.Controllers
 {
@@ -7,9 +8,9 @@ namespace Market.API.Controllers
     public class EmployeeController(ISender sender) : ControllerBase
     {
         [HttpPost]
-        public async Task<ActionResult<string>> CreateEmployee(CreateEmployeeCommand command, CancellationToken ct)
+        public async Task<ActionResult<Employee>> CreateEmployee(CreateEmployeeCommand command, CancellationToken ct)
         {
-           string result = await sender.Send(command, ct);
+           var result = await sender.Send(command, ct);
 
            return result;
         }

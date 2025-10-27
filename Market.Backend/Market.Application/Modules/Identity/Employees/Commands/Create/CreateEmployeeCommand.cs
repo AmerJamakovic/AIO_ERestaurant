@@ -1,6 +1,6 @@
 ﻿namespace Market.Application.Modules.Identity.Employees.Commands.Create
 {
-    public class CreateEmployeeCommand : IRequest<string>
+    public class CreateEmployeeCommand : IRequest<Employee>
     {
         public required JobTitleEnum JobTitle { get; set; }
         public DateTime? BirthDate { get; set; }
