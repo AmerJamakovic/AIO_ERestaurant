@@ -1,4 +1,9 @@
-namespace Market.Infrastructure.Database.Configurations.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Market.Domain.Entities.Catalog;
+using Market.Domain.Common;
+
+namespace Market.Infrastructure.Database.Configurations.Catalog;
 
 public sealed class InvoiceConfiguration : IEntityTypeConfiguration<Invoice>
 {

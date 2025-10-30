@@ -1,10 +1,12 @@
 ﻿using System.Text.Json.Serialization;
+using Market.Domain.Common;
+
 namespace Market.Application.Modules.Identity.Employees.Commands.Update
 {
     public class UpdateEmployeeCommand : IRequest<Employee>
     {
         [JsonIgnore]
-        public string Id { get; set; }  
+        public required string Id { get; set; }
         public JobTitleEnum JobTitle { get; set; }
         public DateTime? BirthDate { get; set; }
         public DateTime? HireDate { get; set; }

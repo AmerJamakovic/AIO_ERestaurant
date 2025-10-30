@@ -1,4 +1,5 @@
-﻿namespace Market.Application.Modules.Identity.Employees.Commands.Create
+﻿using Market.Domain.Common;
+namespace Market.Application.Modules.Identity.Employees.Commands.Create
 {
     public class CreateEmployeeCommand : IRequest<Employee>
     {

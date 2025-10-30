@@ -1,3 +1,8 @@
+using Market.Domain.Common;
+using Market.Domain.Entities.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
 namespace Market.Infrastructure.Database.Configurations.Identity;
 
 public sealed class UserConfiguration : IEntityTypeConfiguration<Customer>

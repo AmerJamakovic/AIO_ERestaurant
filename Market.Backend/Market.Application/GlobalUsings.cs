@@ -2,6 +2,8 @@
 // Global using directives — shared across all feature modules
 // ================================================
 
+global using AutoMapper;
+global using AutoMapper.Configuration;
 global using FluentValidation;
 global using Market.Application.Abstractions;
 global using Market.Application.Common.Exceptions;

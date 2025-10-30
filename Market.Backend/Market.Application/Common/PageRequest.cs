@@ -17,4 +17,6 @@ public sealed class PageRequest
     }
 
     public int SkipCount => (Page - 1) * PageSize;
+
+    public string? SearchTerm { get; init; }
 }

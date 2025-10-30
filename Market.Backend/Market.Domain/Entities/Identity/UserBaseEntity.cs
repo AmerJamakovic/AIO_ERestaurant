@@ -1,4 +1,5 @@
 namespace Market.Domain.Entities.Identity;
+
 using System.ComponentModel.DataAnnotations;
 using Market.Domain.Common;
 
