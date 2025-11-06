@@ -1,1 +1,1 @@
-# rs1-template-project
+# Restaurant Management App
