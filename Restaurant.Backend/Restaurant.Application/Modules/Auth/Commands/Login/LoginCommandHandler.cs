@@ -1,0 +1,45 @@
+﻿using Restaurant.Application.Modules.Auth.Commands.Login;
+
+public sealed class LoginCommandHandler(
+    IAppDbContext ctx,
+    IJwtTokenService jwt,
+    IPasswordHasher<Customer> hasher
+) : IRequestHandler<LoginCommand, LoginCommandDto>
+{
+    public async Task<LoginCommandDto> Handle(LoginCommand request, CancellationToken ct)
+    {
+        var email = request.Email.Trim().ToLowerInvariant();
+
+        var user =
+            await ctx.Customers.FirstOrDefaultAsync(
+                x => x.Email.ToLower() == email && x.IsActive && !x.IsDeleted,
+                ct
+            ) ?? throw new RestaurantNotFoundException("User not found or is banned."); // dodati i za employee
+
+        //var verify = hasher.VerifyHashedPassword(user, user.PasswordHash, request.Password);
+        //if (verify == PasswordVerificationResult.Failed)
+          //  throw new RestaurantConflictException("Invalid credentials.");
+
+        var tokens = jwt.IssueTokens(user);
+
+        ctx.RefreshTokens.Add(
+            new RefreshTokenEntity
+            {
+                TokenHash = tokens.RefreshTokenHash,
+                ExpiresAtUtc = tokens.RefreshTokenExpiresAtUtc,
+                UserId = user.Id,  
+                Customer = user,
+                Fingerprint = request.Fingerprint,
+            }
+        );
+
+        await ctx.SaveChangesAsync(ct);
+
+        return new LoginCommandDto
+        {
+            AccessToken = tokens.AccessToken,
+            RefreshToken = tokens.RefreshTokenRaw,
+            ExpiresAtUtc = tokens.RefreshTokenExpiresAtUtc,
+        };
+    }
+}
