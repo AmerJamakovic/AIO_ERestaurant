@@ -36,7 +36,7 @@ public static class DependencyInjection
                 }
 
                 var cs = sp.GetRequiredService<IOptions<ConnectionStringsOptions>>().Value.Main;
-                options.UseSqlServer(cs);
+                options.UseSqlServer(cs, b => b.MigrationsAssembly("Restaurant.API"));
             }
         );
 
