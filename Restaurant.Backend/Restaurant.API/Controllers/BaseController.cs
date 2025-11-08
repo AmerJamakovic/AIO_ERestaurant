@@ -1,7 +1,4 @@
-using MediatR;
-using Microsoft.AspNetCore.Mvc;
-
-namespace Market.API.Controllers
+namespace Restaurant.API.Controllers
 {
     [ApiController]
     public abstract class BaseController : ControllerBase

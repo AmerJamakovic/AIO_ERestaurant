@@ -43,7 +43,7 @@ public sealed class AuthController : ControllerBase
     [HttpPost("register")]
     [AllowAnonymous]
     public async Task<ActionResult<string>> Register(
-        [FromBody] Market.Application.Modules.Identity.Users.Commands.RegisterUserCommand command,
+        [FromBody] Restaurant.Application.Modules.Identity.Users.Commands.RegisterUserCommand command,
         CancellationToken ct
     )
     {
@@ -54,7 +54,7 @@ public sealed class AuthController : ControllerBase
     [HttpPost("user-login")]
     [AllowAnonymous]
     public async Task<ActionResult<string>> UserLogin(
-        [FromBody] Market.Application.Modules.Identity.Users.Commands.LoginUserCommand command,
+        [FromBody] Restaurant.Application.Modules.Identity.Users.Commands.LoginUserCommand command,
         CancellationToken ct
     )
     {

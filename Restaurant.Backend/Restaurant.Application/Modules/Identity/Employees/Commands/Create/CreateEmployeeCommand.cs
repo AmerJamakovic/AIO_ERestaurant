@@ -1,3 +1,5 @@
+using Restaurant.Domain.Common;
+
 namespace Restaurant.Application.Modules.Identity.Employees.Commands.Create
 {
     public class CreateEmployeeCommand : IRequest<Employee>

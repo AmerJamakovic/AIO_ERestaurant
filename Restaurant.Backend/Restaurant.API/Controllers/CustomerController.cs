@@ -1,10 +1,10 @@
-using Market.Application.Modules.Identity.Customer.Commands.Create;
-using Market.Application.Modules.Identity.Customer.Commands.Delete;
-using Market.Application.Modules.Identity.Customer.Commands.Update;
-using Market.Application.Modules.Identity.Customer.Queries;
-using Market.Shared.Dtos.Identity;
+using Restaurant.Application.Modules.Identity.Customer.Commands.Create;
+using Restaurant.Application.Modules.Identity.Customer.Commands.Delete;
+using Restaurant.Application.Modules.Identity.Customer.Commands.Update;
+using Restaurant.Application.Modules.Identity.Customer.Queries;
+using Restaurant.Shared.Dtos.Identity;
 
-namespace Market.API.Controllers
+namespace Restaurant.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

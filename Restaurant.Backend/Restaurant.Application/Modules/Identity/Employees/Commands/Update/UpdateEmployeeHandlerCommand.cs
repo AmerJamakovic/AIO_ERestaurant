@@ -1,6 +1,4 @@
-﻿using Restaurant.Domain.Entities.Identity;
-
-namespace Restaurant.Application.Modules.Identity.Employees.Commands.Update
+﻿namespace Restaurant.Application.Modules.Identity.Employees.Commands.Update
 {
     public class UpdateEmployeeHandlerCommand(IAppDbContext context)
         : IRequestHandler<UpdateEmployeeCommand, Employee>

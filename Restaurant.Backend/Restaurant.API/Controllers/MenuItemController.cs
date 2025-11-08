@@ -1,11 +1,9 @@
-using Market.Application.Modules.Catalog.Products.Commands.Create;
-using Market.Application.Modules.Catalog.Products.Commands.Delete;
-using Market.Application.Modules.Catalog.Products.Commands.Update;
-using Market.Domain.Entities.Catalog;
-using MediatR;
-using Microsoft.AspNetCore.Mvc;
+using Restaurant.Application.Modules.Catalog.Products.Commands.Create;
+using Restaurant.Application.Modules.Catalog.Products.Commands.Delete;
+using Restaurant.Application.Modules.Catalog.Products.Commands.Update;
+using Restaurant.Domain.Entities.Catalog;
 
-namespace Market.API.Controllers
+namespace Restaurant.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

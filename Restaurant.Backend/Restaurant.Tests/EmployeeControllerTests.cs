@@ -1,11 +1,9 @@
-using System.Net.Http.Json;
-using Market.Application.Modules.Identity.Employees.Commands.Create;
-using Market.Application.Modules.Identity.Employees.Commands.Delete;
-using Market.Application.Modules.Identity.Employees.Commands.Update;
-using Market.Domain.Common;
-using Xunit;
+namespace Restaurant.Tests;
 
-namespace Market.Tests;
+using System.Net.Http.Json;
+using Restaurant.Application.Modules.Identity.Employees.Commands.Create;
+using Restaurant.Application.Modules.Identity.Employees.Commands.Update;
+
 
 public class EmployeeControllerTests : IClassFixture<CustomWebApplicationFactory<Program>>
 {
@@ -26,7 +24,7 @@ public class EmployeeControllerTests : IClassFixture<CustomWebApplicationFactory
             LastName = "Doe",
             Email = "john.doe@example.com",
             Password = "Test1234!",
-            JobTitle = Market.Domain.Common.JobTitleEnum.MANAGER,
+            JobTitle = Restaurant.Domain.Common.JobTitleEnum.MANAGER,
         };
         var createResponse = await _client.PostAsJsonAsync("api/Employee", create);
         createResponse.EnsureSuccessStatusCode();
@@ -39,9 +37,9 @@ public class EmployeeControllerTests : IClassFixture<CustomWebApplicationFactory
         var update = new UpdateEmployeeCommand
         {
             Id = id,
-            JobTitle = Market.Domain.Common.JobTitleEnum.WAITER,
-            BirthDate = System.DateTime.UtcNow.AddYears(-25),
-            HireDate = System.DateTime.UtcNow.AddYears(-1),
+            JobTitle = Domain.Common.JobTitleEnum.WAITER,
+            BirthDate = DateTime.UtcNow.AddYears(-25),
+            HireDate = DateTime.UtcNow.AddYears(-1),
             YearsOfExperience = 1,
         };
         var updateResponse = await _client.PutAsJsonAsync($"api/Employee/{id}", update);

@@ -1,10 +1,8 @@
 using System.Net.Http.Json;
-using Market.Application.Modules.Catalog.Products.Commands.Create;
-using Market.Application.Modules.Catalog.Products.Commands.Delete;
-using Market.Application.Modules.Catalog.Products.Commands.Update;
-using Xunit;
+using Restaurant.Application.Modules.Catalog.Products.Commands.Create;
+using Restaurant.Application.Modules.Catalog.Products.Commands.Update;
 
-namespace Market.Tests;
+namespace Restaurant.Tests;
 
 public class MenuItemControllerTests : IClassFixture<CustomWebApplicationFactory<Program>>
 {

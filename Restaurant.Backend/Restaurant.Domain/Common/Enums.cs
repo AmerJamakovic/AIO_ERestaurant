@@ -1,4 +1,4 @@
-namespace Market.Domain.Common
+namespace Restaurant.Domain.Common
 {
 public enum RoleEnum
 {

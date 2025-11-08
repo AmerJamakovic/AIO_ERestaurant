@@ -1,6 +1,6 @@
 using System;
 
-namespace Market.Application.Common.Exceptions
+namespace Restaurant.Application.Common.Exceptions
 {
     public class NotFoundException : Exception
     {

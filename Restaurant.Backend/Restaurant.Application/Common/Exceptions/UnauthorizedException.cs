@@ -1,6 +1,4 @@
-using System;
-
-namespace Market.Application.Common.Exceptions
+namespace Restaurant.Application.Common.Exceptions
 {
     public class UnauthorizedException : Exception
     {

@@ -1,4 +1,6 @@
-﻿using System.Text.Json.Serialization;
+﻿using Restaurant.Domain.Common;
+using System.Text.Json.Serialization;
+
 namespace Restaurant.Application.Modules.Identity.Employees.Commands.Update
 {
     public class UpdateEmployeeCommand : IRequest<Employee>

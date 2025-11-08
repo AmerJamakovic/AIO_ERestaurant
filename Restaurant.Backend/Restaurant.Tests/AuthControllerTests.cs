@@ -1,8 +1,7 @@
 using System.Net.Http.Json;
-using Xunit;
-using Market.Application.Modules.Identity.Users.Commands;
+using Restaurant.Application.Modules.Identity.Users.Commands;
 
-namespace Market.Tests;
+namespace Restaurant.Tests;
 
 public class AuthControllerTests : IClassFixture<CustomWebApplicationFactory<Program>>
 {
