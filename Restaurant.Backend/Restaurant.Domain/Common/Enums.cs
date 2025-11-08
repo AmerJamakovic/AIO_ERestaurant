@@ -1,3 +1,5 @@
+namespace Market.Domain.Common
+{
 public enum RoleEnum
 {
     NOT_ASSIGNED,
@@ -91,4 +93,5 @@ public enum OrderSourceEnum
     DINE_IN, // Employee & table
     TAKEAWAY, // Employee or customer
     DELIVERY, // Customer only with address
+}
 }

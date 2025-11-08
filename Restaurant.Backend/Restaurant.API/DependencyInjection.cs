@@ -106,6 +106,7 @@ public static class DependencyInjection
             );
         });
 
+
         // Global exception middleware
         services.AddTransient<ExceptionMiddleware>();
 

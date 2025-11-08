@@ -1,6 +1,8 @@
 ﻿using System.Reflection;
 using Restaurant.Application.Common.Behaviors;
 using Microsoft.Extensions.DependencyInjection;
+using AutoMapper;
+using Microsoft.Extensions.Logging;
 
 namespace Restaurant.Application;
 
@@ -10,8 +12,11 @@ public static class DependencyInjection
     {
         var assembly = Assembly.GetExecutingAssembly();
 
-        // MediatR only from the Application layer
-        services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(assembly));
+    // MediatR only from the Application layer
+    services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(assembly));
+
+    // AutoMapper profiles from Application layer
+    services.AddAutoMapper(assembly);
 
         // FluentValidation from the Application layer
         services.AddValidatorsFromAssembly(assembly);

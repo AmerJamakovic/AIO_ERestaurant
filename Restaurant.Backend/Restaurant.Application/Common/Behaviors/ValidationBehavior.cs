@@ -2,6 +2,7 @@
 namespace Restaurant.Application.Common.Behaviors;
 
 public sealed class ValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
+    where TRequest : notnull
 {
     private readonly IEnumerable<IValidator<TRequest>> _validators;
 
