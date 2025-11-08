@@ -6,7 +6,7 @@ namespace Market.Application.Modules.Identity.Employees.Commands.Update
     public class UpdateEmployeeCommand : IRequest<Employee>
     {
         [JsonIgnore]
-        public required string Id { get; set; }
+        public string Id { get; set; } = string.Empty;
         public JobTitleEnum JobTitle { get; set; }
         public DateTime? BirthDate { get; set; }
         public DateTime? HireDate { get; set; }

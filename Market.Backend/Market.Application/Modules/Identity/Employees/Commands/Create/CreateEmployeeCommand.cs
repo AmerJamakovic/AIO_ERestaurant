@@ -3,7 +3,6 @@ namespace Market.Application.Modules.Identity.Employees.Commands.Create
 {
     public class CreateEmployeeCommand : IRequest<Employee>
     {
-        // IRequest bazni
         public required string FirstName { get; set; }
         public required string LastName { get; set; }
         public required string Email { get; set; }

@@ -1,10 +1,8 @@
-using System.Threading.Tasks;
-using Market.Application.Common;
-using Market.Application.Modules.Identity.Customer.Commands;
+using Market.Application.Modules.Identity.Customer.Commands.Create;
+using Market.Application.Modules.Identity.Customer.Commands.Delete;
+using Market.Application.Modules.Identity.Customer.Commands.Update;
 using Market.Application.Modules.Identity.Customer.Queries;
 using Market.Shared.Dtos.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace Market.API.Controllers
 {
@@ -13,18 +11,25 @@ namespace Market.API.Controllers
     public class CustomerController : BaseController
     {
         [HttpPost]
-        public async Task<ActionResult<CustomerDto>> Create([FromBody] CreateCustomerDto dto) =>
-            Ok(await Mediator.Send(new CreateCustomerCommand(dto)));
+        public async Task<ActionResult<CreateCustomerDto>> Create([FromBody] CreateCustomerCommand command) =>
+            Ok(await Mediator.Send(command));
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<CustomerDto>> Update(
-            string id,
-            [FromBody] UpdateCustomerDto dto
-        ) => Ok(await Mediator.Send(new UpdateCustomerCommand(id, dto)));
+        public async Task<ActionResult<UpdateCustomerDto>> Update(
+            Guid id,
+            [FromBody] UpdateCustomerCommand command
+        ) 
+        {
+            command.Id = id.ToString();
+            return Ok(await Mediator.Send(command));
+        }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult<bool>> Delete(string id) =>
-            Ok(await Mediator.Send(new DeleteCustomerCommand(id)));
+        public async Task<ActionResult<DeleteCustomerDto>> Delete(Guid id)
+        {
+            var customer = new DeleteCustomerCommand { Id = id.ToString() };
+            return Ok(await Mediator.Send(customer));
+        }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<CustomerDto>> GetById(string id) =>

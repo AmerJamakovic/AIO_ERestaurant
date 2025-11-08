@@ -9,23 +9,20 @@ namespace Market.Application.Modules.Identity.Employees.Commands.Create
         {
             if (request.YearsOfExperience < 0) // Checks value in case that user maybe provide negative value
                 throw new Exception("Invalid input.");
-            //else if (request.JobTitle > JobTitleEnum.OTHER)   //No need, will be provided FE validation
-            //{
-            //    throw new Exception("Invalid input.");
-            //}
-            else if (request.HireDate is not null) // Checks if user provide year that is in the future
+
+            else if (request.HireDate is not null) 
             {
-                if (request.HireDate.Value.Year > DateTime.Now.Year)
+                if (request.HireDate.Value.Year > DateTime.Now.Year) // Checks if user provide year that is in the future
                 {
                     throw new Exception("Invalid.");
                 }
             }
-            else if (request.BirthDate is not null) // Checks if user provide year that is in the future
+            else if (request.BirthDate is not null) 
             {
                 if (
                     request.BirthDate.Value.Year < 1900
                     || request.YearsOfExperience
-                        > (DateTime.Now.Year - request.BirthDate.Value.Year)
+                       > (DateTime.Now.Year - request.BirthDate.Value.Year) // Checks if the claimed YearsOfExperience is greater than the person's actual age or if the birth year is before 1900.
                 )
                 {
                     throw new Exception("Invalid input.");

@@ -2,6 +2,7 @@
 using Market.Application.Common.Behaviors;
 using Microsoft.Extensions.DependencyInjection;
 using AutoMapper;
+using Microsoft.Extensions.Logging;
 
 namespace Market.Application;
 

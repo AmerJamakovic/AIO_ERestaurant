@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Market.Shared.Dtos.Identity;
 
 namespace Market.Application.Modules.Identity.Customer.Commands.Delete
 {
-    public class DeleteCustomerCommand
+    public class DeleteCustomerCommand : IRequest<DeleteCustomerDto>
     {
-
+        public string Id { get; set; }
     }
 }

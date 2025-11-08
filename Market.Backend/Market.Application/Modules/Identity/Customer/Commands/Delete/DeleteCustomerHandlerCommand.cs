@@ -1,22 +1,21 @@
 namespace Market.Application.Modules.Identity.Customer.Commands.Delete;
-
 using Market.Application.Common.Exceptions;
-using Market.Domain.Entities.Identity;
+using Market.Shared.Dtos.Identity;
 using Microsoft.EntityFrameworkCore;
 
-public record DeleteCustomerHandlerCommand(string Id) : IRequest<bool>;
-
-public class DeleteCustomerCommandHandler : IRequestHandler<DeleteCustomerHandlerCommand, bool>
+public class DeleteCustomerCommandHandler : IRequestHandler<DeleteCustomerCommand, DeleteCustomerDto>
 {
     private readonly IAppDbContext _context;
+    private readonly IMapper _mapper;
 
-    public DeleteCustomerCommandHandler(IAppDbContext context)
+    public DeleteCustomerCommandHandler(IAppDbContext context, IMapper mapper)
     {
         _context = context;
+        _mapper = mapper;
     }
 
-    public async Task<bool> Handle(
-        DeleteCustomerHandlerCommand request,
+    public async Task<DeleteCustomerDto> Handle(
+        DeleteCustomerCommand request,
         CancellationToken cancellationToken
     )
     {
@@ -31,6 +30,13 @@ public class DeleteCustomerCommandHandler : IRequestHandler<DeleteCustomerHandle
         customer.SoftDelete();
         await _context.SaveChangesAsync(cancellationToken);
 
-        return true;
+        return new DeleteCustomerDto
+        {
+            FirstName = customer.FirstName,
+            LastName = customer.LastName,
+            Password = customer.PasswordHash,
+            Email = customer.Email,
+            PhoneNumber = customer.PhoneNumber,
+        };
     }
 }

@@ -1,28 +1,25 @@
 namespace Market.Application.Modules.Identity.Customer.Commands.Create;
-
+using AutoMapper.Configuration;
 using Market.Domain.Common;
 using Market.Domain.Entities.Identity;
 using Market.Shared.Dtos.Identity;
 using Microsoft.EntityFrameworkCore;
 
-public class CreateCustomerCommandHandler : IRequestHandler<CreateCustomerCommand, CustomerDto>
+public class CreateCustomerCommandHandler : IRequestHandler<CreateCustomerCommand, CreateCustomerDto>
 {
     private readonly IAppDbContext _context;
     private readonly IPasswordHasher<Customer> _passwordHasher;
-    private readonly IMapper _mapper;
 
     public CreateCustomerCommandHandler(
         IAppDbContext context,
-        IPasswordHasher<Customer> passwordHasher,
-        IMapper mapper
+        IPasswordHasher<Customer> passwordHasher
     )
     {
         _context = context;
         _passwordHasher = passwordHasher;
-        _mapper = mapper;
     }
 
-    public async Task<CustomerDto> Handle(
+    public async Task<CreateCustomerDto> Handle(
         CreateCustomerCommand request,
         CancellationToken cancellationToken
     )
@@ -58,6 +55,14 @@ public class CreateCustomerCommandHandler : IRequestHandler<CreateCustomerComman
 
         await _context.SaveChangesAsync(cancellationToken);
 
-        return _mapper.Map<CustomerDto>(customer);
+        return new CreateCustomerDto
+        {
+            FirstName = customer.FirstName,
+            LastName = customer.LastName,
+            Email = customer.Email,
+            Address = customer.Address,
+            PhoneNumber = customer.PhoneNumber,
+            Password = customer.PasswordHash
+        };
     }
 }

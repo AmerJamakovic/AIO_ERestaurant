@@ -1,6 +1,6 @@
 namespace Market.Shared.Dtos.Identity;
 
-public record CustomerDto
+public class CustomerDto
 {
     public string Id { get; set; } = string.Empty;
     public string FirstName { get; set; } = string.Empty;
@@ -14,7 +14,7 @@ public record CustomerDto
     public DateTime? UpdatedAt { get; set; }
 }
 
-public record CreateCustomerDto
+public class CreateCustomerDto
 {
     public required string FirstName { get; set; }
     public required string LastName { get; set; }
@@ -24,11 +24,21 @@ public record CreateCustomerDto
     public string? Address { get; set; }
 }
 
-public record UpdateCustomerDto
+public class UpdateCustomerDto
 {
     public string? FirstName { get; set; }
     public string? LastName { get; set; }
     public string? PhoneNumber { get; set; }
     public string? Address { get; set; }
     public bool? IsActive { get; set; }
+}
+
+public class DeleteCustomerDto
+{
+    public required string FirstName { get; set; }
+    public required string LastName { get; set; }
+    public required string Email { get; set; }
+    public required string Password { get; set; }
+    public string? PhoneNumber { get; set; }
+    public string? Address { get; set; }
 }

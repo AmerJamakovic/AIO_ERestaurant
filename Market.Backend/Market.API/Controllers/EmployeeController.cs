@@ -28,8 +28,7 @@ namespace Market.API.Controllers
         )
         {
             var idStr = id.ToString();
-            if (idStr != command.Id)
-                return BadRequest("Id mismatch");
+            command.Id = idStr;
             var result = await sender.Send(command, ct);
             return result;
         }
