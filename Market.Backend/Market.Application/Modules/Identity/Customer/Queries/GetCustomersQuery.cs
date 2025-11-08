@@ -1,9 +1,7 @@
 namespace Market.Application.Modules.Identity.Customer.Queries;
-
 using Market.Application.Common;
 using Market.Domain.Entities.Identity;
 using Market.Shared.Dtos.Identity;
-using Microsoft.EntityFrameworkCore;
 
 public sealed class GetCustomersQuery : BasePagedQuery<CustomerDto>
 {
@@ -31,7 +29,7 @@ public class GetCustomersQueryHandler : IRequestHandler<GetCustomersQuery, PageR
     {
         var query = _context.Customers.Where(x => !x.IsDeleted).OrderByDescending(x => x.CreatedAt);
 
-        if (!string.IsNullOrEmpty(request.Paging.SearchTerm))
+        if (!string.IsNullOrEmpty(request.Paging.SearchTerm)) // What if provided SearchTerm is like this "    "
         {
             var searchTerm = request.Paging.SearchTerm.ToLower();
             query =

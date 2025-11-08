@@ -1,11 +1,9 @@
-namespace Market.Application.Modules.Identity.Customer.Commands;
+namespace Market.Application.Modules.Identity.Customer.Commands.Create;
 
 using Market.Domain.Common;
 using Market.Domain.Entities.Identity;
 using Market.Shared.Dtos.Identity;
 using Microsoft.EntityFrameworkCore;
-
-public record CreateCustomerCommand(CreateCustomerDto Dto) : IRequest<CustomerDto>;
 
 public class CreateCustomerCommandHandler : IRequestHandler<CreateCustomerCommand, CustomerDto>
 {
@@ -31,7 +29,7 @@ public class CreateCustomerCommandHandler : IRequestHandler<CreateCustomerComman
     {
         // Check if email is already taken
         var emailExists = await _context.Customers.AnyAsync(
-            x => x.Email == request.Dto.Email,
+            x => x.Email == request.Email,
             cancellationToken
         );
 
@@ -42,20 +40,21 @@ public class CreateCustomerCommandHandler : IRequestHandler<CreateCustomerComman
 
         var customer = new Customer
         {
-            FirstName = request.Dto.FirstName,
-            LastName = request.Dto.LastName,
-            Email = request.Dto.Email,
-            PasswordHash = request.Dto.Password, // Temporary - will be hashed after creation
-            PhoneNumber = request.Dto.PhoneNumber,
-            Address = request.Dto.Address,
+            FirstName = request.FirstName,
+            LastName = request.LastName,
+            Email = request.Email,
+            PasswordHash = request.Password, // Temporary - will be hashed after creation
+            PhoneNumber = request.PhoneNumber,
+            Address = request.Address,
             Role = RoleEnum.CUSTOMER,
             IsVerified = true,
         };
 
         _context.Customers.Add(customer);
+        // Need to check if PasswordHash is updated in DB after hashing provided password in 58 line
 
         // Hash the password after creating customer
-        customer.PasswordHash = _passwordHasher.HashPassword(customer, request.Dto.Password);
+        customer.PasswordHash = _passwordHasher.HashPassword(customer, request.Password);
 
         await _context.SaveChangesAsync(cancellationToken);
 

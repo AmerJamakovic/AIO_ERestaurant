@@ -1,7 +1,5 @@
 namespace Market.Application.Modules.Identity.Customer.Queries;
-
 using Market.Application.Common.Exceptions;
-using Market.Domain.Entities.Identity;
 using Market.Shared.Dtos.Identity;
 using Microsoft.EntityFrameworkCore;
 

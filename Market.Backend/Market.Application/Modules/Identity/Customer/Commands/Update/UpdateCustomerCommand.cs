@@ -1,7 +1,5 @@
-namespace Market.Application.Modules.Identity.Customer.Commands;
-
+namespace Market.Application.Modules.Identity.Customer.Commands.Update;
 using Market.Application.Common.Exceptions;
-using Market.Domain.Entities.Identity;
 using Market.Shared.Dtos.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -23,14 +21,20 @@ public class UpdateCustomerCommandHandler : IRequestHandler<UpdateCustomerComman
         CancellationToken cancellationToken
     )
     {
+        // Should add some logic for checking if the provided ID in invalid format (empty, null, etc)
+        // therefore in that case no need to run query
+        // For example
+        // if (string.IsNullOrWhiteSpace(request.Id))
+        //      throw new NotFoundException("Invalid input");
+
         var customer =
-            await _context.Customers.FirstOrDefaultAsync(
-                x => x.Id == request.Id && !x.IsDeleted,
-                cancellationToken
-            ) ?? throw new NotFoundException($"Customer with ID {request.Id} was not found");
+        await _context.Customers.FirstOrDefaultAsync(
+            x => x.Id == request.Id && !x.IsDeleted,
+            cancellationToken
+        ) ?? throw new NotFoundException($"Customer with ID {request.Id} was not found");
 
         // Update only provided fields
-        if (request.Dto.FirstName != null)
+        if (request.Dto.FirstName != null) // Maybe choose string.IsNullOrEmpty() method instead of current not null if condition
             customer.FirstName = request.Dto.FirstName;
         if (request.Dto.LastName != null)
             customer.LastName = request.Dto.LastName;

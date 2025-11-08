@@ -1,4 +1,6 @@
-﻿namespace Market.Application.Modules.Identity.Employees.Commands.Create
+﻿using Market.Domain.Common;
+
+namespace Market.Application.Modules.Identity.Employees.Commands.Create
 {
     public class CreateEmployeeHandlerCommand(IAppDbContext context)
         : IRequestHandler<CreateEmployeeCommand, Employee>
@@ -7,10 +9,10 @@
         {
             if (request.YearsOfExperience < 0) // Checks value in case that user maybe provide negative value
                 throw new Exception("Invalid input.");
-            else if ((int)request.JobTitle > 5)
-            {
-                throw new Exception("Invalid input.");
-            }
+            //else if (request.JobTitle > JobTitleEnum.OTHER)   //No need, will be provided FE validation
+            //{
+            //    throw new Exception("Invalid input.");
+            //}
             else if (request.HireDate is not null) // Checks if user provide year that is in the future
             {
                 if (request.HireDate.Value.Year > DateTime.Now.Year)
