@@ -8,6 +8,6 @@ namespace Restaurant.Application.Modules.Catalog.Products.Commands.Update
     public required string Name { get; set; }
     public required string Description { get; set; }
     public required decimal Price { get; set; }
-    public required string GroupId { get; set; }
+    public required string MenuGroupId { get; set; }
     }
 }

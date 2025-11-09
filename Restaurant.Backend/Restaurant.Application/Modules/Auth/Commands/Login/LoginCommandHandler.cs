@@ -16,9 +16,9 @@ public sealed class LoginCommandHandler(
                 ct
             ) ?? throw new RestaurantNotFoundException("User not found or is banned."); // dodati i za employee
 
-        //var verify = hasher.VerifyHashedPassword(user, user.PasswordHash, request.Password);
-        //if (verify == PasswordVerificationResult.Failed)
-          //  throw new RestaurantConflictException("Invalid credentials.");
+        var verify = hasher.VerifyHashedPassword(user, user.PasswordHash, request.Password);
+        if (verify == PasswordVerificationResult.Failed)
+            throw new RestaurantConflictException("Invalid credentials.");
 
         var tokens = jwt.IssueTokens(user);
 

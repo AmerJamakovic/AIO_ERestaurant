@@ -1,4 +1,4 @@
-namespace Restaurant.Domain.Entities.Catalog;
+namespace Restaurant.Domain.Entities.Misc;
 
 using System.ComponentModel.DataAnnotations;
 using Restaurant.Domain.Common;

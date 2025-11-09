@@ -1,4 +1,6 @@
-namespace Restaurant.Domain.Entities.Catalog;
+using Restaurant.Domain.Entities.Catalog;
+
+namespace Restaurant.Domain.Entities.Misc;
 
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -21,5 +23,4 @@ public class Review : BaseEntity
     [Required]
     public int Rating { get; set; }
     public string? Comment { get; set; }
-    public bool IsApproved { get; set; } = false;
 }

@@ -2,16 +2,17 @@ namespace Restaurant.Infrastructure.Database.Configurations.Identity;
 
 public sealed class EmployeeConfiguration : IEntityTypeConfiguration<Employee>
 {
-    public void Configure(EntityTypeBuilder<Employee> b)
+    public void Configure(EntityTypeBuilder<Employee> builder)
     {
-        b.ToTable("Employees");
+        builder.ToTable("Employees");
 
-        b.HasKey(x => x.Id);
+        builder.HasKey(x => x.Id);
+        builder.Property(x => x.Id).HasColumnName("EmployeeId");
 
-        b.Property(x => x.JobTitle).IsRequired().HasConversion<string>().HasMaxLength(50);
+        builder.Property(x => x.JobTitle).IsRequired().HasConversion<string>().HasMaxLength(50);
 
-        b.Property(x => x.BirthDate);
-        b.Property(x => x.HireDate);
-        b.Property(x => x.YearsOfExperience).HasDefaultValue(0);
+        builder.Property(x => x.BirthDate);
+        builder.Property(x => x.HireDate);
+        builder.Property(x => x.YearsOfExperience).HasDefaultValue(0);
     }
 }

@@ -2,6 +2,6 @@
 {
     public class GetEmployeeByIdQuery : IRequest<GetEmployeeByIdQueryDto>
     {
-        public string Id { get; set; }
+        public string Id { get; set; } = null!;
     }
 }

@@ -1,6 +1,7 @@
-namespace Restaurant.Domain.Entities.Catalog;
+using Restaurant.Domain.Entities.Catalog;
 
-using System.ComponentModel;
+namespace Restaurant.Domain.Entities.PaymentProcessing;
+
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Restaurant.Domain.Common;
@@ -21,12 +22,10 @@ public class Reservation : BaseEntity
     public required RestaurantTable Table { get; set; }
 
     [Required]
-    public DateTime ReservationDate { get; set; }
+    public required DateTime ReservationDate { get; set; }
 
     [Required]
-    public int PartySize { get; set; }
-
-    public string? SpecialRequests { get; set; }
+    public required int PartySize { get; set; }
 
     [Required]
     public ReservationStatusEnum Status { get; set; } = ReservationStatusEnum.PENDING;

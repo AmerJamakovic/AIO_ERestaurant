@@ -14,19 +14,17 @@ public class MenuItem : BaseEntity
     [Required]
     public required decimal Price { get; set; }
 
-    public int? Calories { get; set; }
+    public UInt32? Calories { get; set; }
 
-    public bool IsSpecial { get; set; } = false;
-
-    public string? ImageUrl { get; set; } // Image of some sort idk yet
+    public string? ImageUrl { get; set; } // Consider using 'Image' class ??
 
     public bool IsAvailable { get; set; } = true;
 
     public bool IsActive { get; set; } = true;
 
     [Required]
-    public required string GroupId { get; set; }
+    public required string MenuGroupId { get; set; }
 
-    [ForeignKey("GroupId")]
-    public MenuGroup? Group { get; set; }
+    [ForeignKey("MenuGroupId")]
+    public MenuGroup? MenuGroup { get; set; }
 }

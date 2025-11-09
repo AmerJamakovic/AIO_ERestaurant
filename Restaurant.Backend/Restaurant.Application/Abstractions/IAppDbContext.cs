@@ -4,6 +4,8 @@
 using Restaurant.Domain.Entities.Catalog;
 using Restaurant.Domain.Entities.Identity;
 using Microsoft.EntityFrameworkCore;
+using Restaurant.Domain.Entities.Misc;
+using Restaurant.Domain.Entities.PaymentProcessing;
 
 public interface IAppDbContext
 {

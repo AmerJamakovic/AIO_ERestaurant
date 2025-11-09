@@ -8,12 +8,12 @@ public sealed class LoginCommandDto
     /// <summary>
     /// JWT access token – used for authorized API calls.
     /// </summary>
-    public string AccessToken { get; set; }
+    public string AccessToken { get; set; } = null!;
 
     /// <summary>
     /// Refresh token that the client stores locally and uses to obtain a new access token.
     /// </summary>
-    public string RefreshToken { get; set; }
+    public string RefreshToken { get; set; } = null!;
 
     /// <summary>
     /// Expiration time of the access token in UTC format.

@@ -1,4 +1,6 @@
-namespace Restaurant.Domain.Entities.Catalog;
+using Restaurant.Domain.Entities.Catalog;
+
+namespace Restaurant.Domain.Entities.PaymentProcessing;
 
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -19,10 +21,8 @@ public class OrderItem : BaseEntity
     public MenuItem? MenuItem { get; set; }
 
     [Required]
-    public int Quantity { get; set; } = 1;
+    public required int Quantity { get; set; }
 
     [Required]
-    public decimal UnitPriceAtOrder { get; set; }
-
-    public string? SpecialInstructions { get; set; }
+    public required decimal UnitPrice { get; set; }
 }

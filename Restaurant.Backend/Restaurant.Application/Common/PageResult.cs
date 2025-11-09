@@ -3,7 +3,7 @@
 public sealed class PageResult<T>
 {
     public int Total { get; init; }
-    public IReadOnlyList<T> Items { get; init; }
+    public IReadOnlyList<T> Items { get; init; } = null!;
 
     /// <summary>
     /// Creates a PageResult from an IQueryable using EF Core asynchronous methods.

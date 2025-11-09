@@ -1,4 +1,5 @@
-﻿using System.Linq.Expressions;
+﻿using System.Reflection;
+using System.Linq.Expressions;
 using Restaurant.Domain.Common;
 using Restaurant.Infrastructure.Database.Seeders;
 
@@ -33,11 +34,12 @@ public partial class DatabaseContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        //modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         base.OnModelCreating(modelBuilder);
 
         ApplyGlobalFilters(modelBuilder);
 
-        StaticDataSeeder.Seed(modelBuilder); // static data
+        StaticDataSeeder.Seed(modelBuilder);
     }
 
     private void ApplyGlobalFilters(ModelBuilder modelBuilder)

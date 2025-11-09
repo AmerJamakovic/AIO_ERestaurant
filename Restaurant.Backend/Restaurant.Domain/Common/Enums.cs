@@ -26,13 +26,6 @@ public enum ReservationStatusEnum
     CANCELED,
 }
 
-public enum OrderTypeEnum
-{
-    DINE_IN,
-    TAKEAWAY,
-    DELIVERY,
-}
-
 public enum OrderStatusEnum
 {
     OPEN,
@@ -40,6 +33,13 @@ public enum OrderStatusEnum
     READY,
     CLOSED,
     INVOICED,
+}
+
+public enum OrderTypeEnum
+{
+    DINE_IN, // Standard table order
+    TAKEAWAY,
+    DELIVERY,
 }
 
 public enum PaymentMethodEnum
@@ -66,15 +66,9 @@ public enum TicketDestinationEnum
 
 public enum TicketStatusEnum
 {
-    SENT,
+    CREATED,
     IN_PROGRESS,
     DONE,
-}
-
-public enum DiscountTypeEnum
-{
-    PERCENTAGE,
-    FIXED_AMOUNT,
 }
 
 public enum AllergenTypeEnum
@@ -84,14 +78,5 @@ public enum AllergenTypeEnum
     FISH,
     SOYBEANS,
     WHEAT,
-}
-
-public enum OrderSourceEnum
-{
-    ONLINE, // Customer only
-    PHONE, // Employee & customer
-    DINE_IN, // Employee & table
-    TAKEAWAY, // Employee or customer
-    DELIVERY, // Customer only with address
 }
 }

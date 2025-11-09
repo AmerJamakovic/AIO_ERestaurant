@@ -31,9 +31,9 @@ public class UpdateCustomerCommandHandler : IRequestHandler<UpdateCustomerComman
 
         // Update only provided fields
         if (string.IsNullOrEmpty(request.FirstName))
-            customer.FirstName = request.FirstName;
+            customer.FirstName = request.FirstName!;
         if (string.IsNullOrEmpty(request.LastName))
-            customer.LastName = request.LastName;
+            customer.LastName = request.LastName!;
         if (string.IsNullOrEmpty(request.PhoneNumber))
             customer.PhoneNumber = request.PhoneNumber;
         if (string.IsNullOrEmpty(request.Address))

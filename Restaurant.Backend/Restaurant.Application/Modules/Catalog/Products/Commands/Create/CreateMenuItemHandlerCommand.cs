@@ -18,7 +18,7 @@ namespace Restaurant.Application.Modules.Catalog.Products.Commands.Create
                 Name = request.Name,
                 Description = request.Description,
                 Price = request.Price,
-                GroupId = request.GroupId,
+                MenuGroupId = request.MenuGroupId,
             };
             _db.MenuItems.Add(menuItem);
             await _db.SaveChangesAsync(cancellationToken);

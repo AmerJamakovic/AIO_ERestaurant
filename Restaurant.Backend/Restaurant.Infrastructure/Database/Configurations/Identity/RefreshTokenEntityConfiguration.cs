@@ -2,20 +2,17 @@
 
 public sealed class RefreshTokenEntityConfiguration : IEntityTypeConfiguration<RefreshTokenEntity>
 {
-    public void Configure(EntityTypeBuilder<RefreshTokenEntity> b)
+    public void Configure(EntityTypeBuilder<RefreshTokenEntity> builder)
     {
-        b.ToTable("RefreshTokens");
+        builder.ToTable("RefreshTokens");
 
-        b.HasKey(x => x.Id);
+        builder.HasKey(x => x.Id);
+        builder.Property(x => x.Id).HasColumnName("RefreshTokenId");
 
-        b.HasIndex(x => new { x.UserId, x.TokenHash }).IsUnique();
+        builder.HasIndex(x => new { x.UserId, x.TokenHash }).IsUnique();
 
-        b.Property(x => x.TokenHash).IsRequired();
-
-        b.Property(x => x.ExpiresAtUtc).IsRequired();
-
-        b.Property(x => x.IsRevoked).HasDefaultValue(false);
-
-        b.Property(x => x.Fingerprint).HasMaxLength(200);
+        builder.Property(x => x.TokenHash).IsRequired();
+        builder.Property(x => x.ExpiresAtUtc).IsRequired();
+        builder.Property(x => x.IsRevoked).HasDefaultValue(false);
     }
 }

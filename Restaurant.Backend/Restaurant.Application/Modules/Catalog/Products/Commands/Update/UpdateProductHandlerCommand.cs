@@ -22,7 +22,7 @@ namespace Restaurant.Application.Modules.Catalog.Products.Commands.Update
             menuItem.Name = request.Name;
             menuItem.Description = request.Description;
             menuItem.Price = request.Price;
-            menuItem.GroupId = request.GroupId;
+            menuItem.MenuGroupId = request.MenuGroupId;
             await _db.SaveChangesAsync(cancellationToken);
             return menuItem;
         }

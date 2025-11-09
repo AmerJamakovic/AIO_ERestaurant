@@ -8,12 +8,12 @@ public sealed class LoginCommand : IRequest<LoginCommandDto>
     /// <summary>
     /// User's email.
     /// </summary>
-    public string Email { get; init; }
+    public string Email { get; init; } = null!;
 
     /// <summary>
     /// User's password.
     /// </summary>
-    public string Password { get; init; }
+    public string Password { get; init; } = null!;
 
     /// <summary>
     /// (Optional) Client "fingerprint" / device identifier for device-bound refresh tokens.

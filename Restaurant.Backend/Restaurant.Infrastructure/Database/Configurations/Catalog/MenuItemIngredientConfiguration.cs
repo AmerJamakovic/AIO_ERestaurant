@@ -2,31 +2,26 @@ namespace Restaurant.Infrastructure.Database.Configurations.Identity;
 
 public sealed class MenuItemIngredientConfiguration : IEntityTypeConfiguration<MenuItemIngredient>
 {
-    public void Configure(EntityTypeBuilder<MenuItemIngredient> b)
+    public void Configure(EntityTypeBuilder<MenuItemIngredient> builder)
     {
-        // Table name
-        b.ToTable("MenuItemIngredients");
+        builder.ToTable("MenuItemIngredients");
 
-        // Primary key
-        b.HasKey(x => x.Id);
+        builder.HasKey(x => x.Id);
+        builder.Property(x => x.Id).HasColumnName("MenuItemIngredientId");
 
-        // Foreign keys
-        b.Property(x => x.MenuItemId).IsRequired().HasMaxLength(450);
+        builder.Property(x => x.MenuItemId).IsRequired();
+        builder.Property(x => x.IngredientId).IsRequired();
 
-        b.Property(x => x.IngredientId).IsRequired().HasMaxLength(450);
-
-        // Relationships
-        b.HasOne(x => x.MenuItem)
-            .WithMany() // assuming MenuItem doesn’t have a collection yet
+        builder.HasOne(x => x.MenuItem)
+            .WithMany()
             .HasForeignKey(x => x.MenuItemId)
             .OnDelete(DeleteBehavior.Cascade);
 
-        b.HasOne(x => x.Ingredient)
-            .WithMany() // assuming Ingredient doesn’t have a collection yet
+        builder.HasOne(x => x.Ingredient)
+            .WithMany()
             .HasForeignKey(x => x.IngredientId)
             .OnDelete(DeleteBehavior.Cascade);
 
-        // Optional: prevent duplicates
-        b.HasIndex(x => new { x.MenuItemId, x.IngredientId }).IsUnique();
+        builder.HasIndex(x => new { x.MenuItemId, x.IngredientId }).IsUnique();
     }
 }

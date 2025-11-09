@@ -2,24 +2,17 @@ namespace Restaurant.Infrastructure.Database.Configurations.Identity;
 
 public sealed class RestaurantTableConfiguration : IEntityTypeConfiguration<RestaurantTable>
 {
-    public void Configure(EntityTypeBuilder<RestaurantTable> b)
+    public void Configure(EntityTypeBuilder<RestaurantTable> builder)
     {
-        // Table name
-        b.ToTable("RestaurantTables");
+        builder.ToTable("RestaurantTables");
 
-        // Primary key
-        b.HasKey(x => x.Id);
+        builder.HasKey(x => x.Id);
+        builder.Property(x => x.Id).HasColumnName("RestaurantTableId").HasConversion<string>();
 
-        // Properties
-        b.Property(x => x.Number).IsRequired();
-
-        b.HasIndex(x => x.Number).IsUnique(); // Each table number must be unique
-
-        b.Property(x => x.NumberOfSets).IsRequired();
-
-        b.Property(x => x.IsAvailable).HasDefaultValue(true);
-
-        // You can add future relationships here
-        // Example: b.HasMany(x => x.Reservations).WithOne(x => x.Table)
+        builder.Property(x => x.Number).IsRequired();
+        builder.HasIndex(x => x.Number).IsUnique();
+        
+        builder.Property(x => x.NumberOfSeats).IsRequired();
+        builder.Property(x => x.IsAvailable).HasDefaultValue(true);
     }
 }

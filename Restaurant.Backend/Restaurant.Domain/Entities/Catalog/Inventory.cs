@@ -3,6 +3,7 @@ namespace Restaurant.Domain.Entities.Catalog;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Restaurant.Domain.Common;
+using Restaurant.Domain.Entities.Misc;
 
 public class Inventory : BaseEntity
 {

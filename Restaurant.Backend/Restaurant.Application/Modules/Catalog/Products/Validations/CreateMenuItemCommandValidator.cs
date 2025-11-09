@@ -9,7 +9,7 @@ namespace Restaurant.Application.Modules.Catalog.Products.Validations
             RuleFor(x => x.Name).NotEmpty().MaximumLength(100);
             RuleFor(x => x.Description).MaximumLength(500);
             RuleFor(x => x.Price).GreaterThan(0);
-            RuleFor(x => x.GroupId).MaximumLength(100);
+            RuleFor(x => x.MenuGroupId).MaximumLength(100);
         }
     }
 }

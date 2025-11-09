@@ -3,8 +3,9 @@ namespace Restaurant.Domain.Entities.Catalog;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Restaurant.Domain.Common;
+using Restaurant.Domain.Entities.PaymentProcessing;
 
-public class KitchenTicket : BaseEntity
+public class OrderTicket : BaseEntity
 {
     [Required]
     public required string OrderItemId { get; set; }
@@ -13,10 +14,10 @@ public class KitchenTicket : BaseEntity
     public required OrderItem OrderItem { get; set; }
 
     [Required]
-    public TicketDestinationEnum Destination { get; set; }
+    public required TicketDestinationEnum Destination { get; set; }
 
     [Required]
-    public TicketStatusEnum Status { get; set; } = TicketStatusEnum.SENT;
+    public required TicketStatusEnum Status { get; set; }
 
     public string? Notes { get; set; }
 }

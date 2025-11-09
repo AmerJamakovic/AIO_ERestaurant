@@ -2,24 +2,25 @@ namespace Restaurant.Infrastructure.Database.Configurations.Identity;
 
 public sealed class InventoryConfiguration : IEntityTypeConfiguration<Inventory>
 {
-    public void Configure(EntityTypeBuilder<Inventory> b)
+    public void Configure(EntityTypeBuilder<Inventory> builder)
     {
-        b.ToTable("Inventories");
+        builder.ToTable("Inventories");
 
-        b.HasKey(x => x.Id);
+        builder.HasKey(x => x.Id);
+        builder.Property(x => x.Id).HasColumnName("InventoryId");
 
-        b.Property(x => x.IngredientId).IsRequired();
+        builder.Property(x => x.IngredientId).IsRequired();
 
-        b.HasOne(x => x.Ingredient)
+        builder.HasOne(x => x.Ingredient)
             .WithMany()
             .HasForeignKey(x => x.IngredientId)
             .OnDelete(DeleteBehavior.Restrict);
 
-        b.Property(x => x.QuantityInStock).IsRequired();
-        b.Property(x => x.Unit).IsRequired().HasMaxLength(50);
-        b.Property(x => x.ReorderLevel).IsRequired();
-        b.Property(x => x.ReorderQuantity).IsRequired();
-        b.Property(x => x.SupplierName).HasMaxLength(200);
-        b.Property(x => x.LastRestocked);
+        builder.Property(x => x.QuantityInStock).IsRequired();
+        builder.Property(x => x.Unit).IsRequired().HasMaxLength(50);
+        builder.Property(x => x.ReorderLevel).IsRequired();
+        builder.Property(x => x.ReorderQuantity).IsRequired();
+        builder.Property(x => x.SupplierName).HasMaxLength(200);
+        builder.Property(x => x.LastRestocked);
     }
 }

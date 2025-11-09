@@ -2,38 +2,28 @@ namespace Restaurant.Infrastructure.Database.Configurations.Identity;
 
 public sealed class MenuItemConfiguration : IEntityTypeConfiguration<MenuItem>
 {
-    public void Configure(EntityTypeBuilder<MenuItem> b)
+    public void Configure(EntityTypeBuilder<MenuItem> builder)
     {
-        // Table name
-        b.ToTable("MenuItems");
+        builder.ToTable("MenuItems");
 
-        // Primary key
-        b.HasKey(x => x.Id);
+        builder.HasKey(x => x.Id);
+        builder.Property(x => x.Id).HasColumnName("MenuItemId");
 
-        // Index for fast search by name (optional)
-        b.HasIndex(x => x.Name);
+        builder.HasIndex(x => x.Name);
+        builder.Property(x => x.Name).IsRequired().HasMaxLength(150);
 
-        // Property configurations
-        b.Property(x => x.Name).IsRequired().HasMaxLength(150);
+        builder.Property(x => x.Description).HasMaxLength(300);
+        
+        // NOTE: 10.2 decimal is a standard format
+        builder.Property(x => x.Price).IsRequired().HasColumnType("decimal(10,2)");
 
-        b.Property(x => x.Description).HasMaxLength(500);
+        builder.Property(x => x.Calories).HasDefaultValue(null);
+        builder.Property(x => x.IsAvailable).HasDefaultValue(true);
+        builder.Property(x => x.IsActive).HasDefaultValue(true);
 
-        b.Property(x => x.Price).IsRequired().HasColumnType("decimal(10,2)"); // standard price format
-
-        b.Property(x => x.Calories).HasDefaultValue(null);
-
-        b.Property(x => x.IsSpecial).HasDefaultValue(false);
-
-        b.Property(x => x.ImageUrl).HasMaxLength(500);
-
-        b.Property(x => x.IsAvailable).HasDefaultValue(true);
-
-        b.Property(x => x.IsActive).HasDefaultValue(true);
-
-        // Foreign key relationship: MenuItem → MenuGroup (optional)
-        b.HasOne(x => x.Group)
-            .WithMany() // or .WithMany(g => g.MenuItems) if you later add collection
-            .HasForeignKey(x => x.GroupId)
-            .OnDelete(DeleteBehavior.SetNull); // when group deleted, keep menu item but null GroupId
+        builder.HasOne(x => x.MenuGroup)
+            .WithMany()
+            .HasForeignKey(x => x.MenuGroupId)
+            .OnDelete(DeleteBehavior.SetNull);
     }
 }
