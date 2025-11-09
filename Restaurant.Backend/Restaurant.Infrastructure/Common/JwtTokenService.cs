@@ -39,7 +39,7 @@ public sealed class JwtTokenService : IJwtTokenService
                 ToUnixTimeSeconds(nowInstant).ToString(),
                 ClaimValueTypes.Integer64
             ),
-            new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString("N")),
+            new(JwtRegisteredClaimNames.Jti, new String("N")),
             new(JwtRegisteredClaimNames.Aud, _jwt.Audience),
         };
 

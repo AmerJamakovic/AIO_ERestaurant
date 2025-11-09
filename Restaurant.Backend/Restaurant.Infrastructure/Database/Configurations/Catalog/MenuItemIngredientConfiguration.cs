@@ -11,7 +11,7 @@ public sealed class MenuItemIngredientConfiguration : IEntityTypeConfiguration<M
         b.HasKey(x => x.Id);
 
         // Foreign keys
-        b.Property(x => x.MenuItemId).IsRequired().HasMaxLength(450); // assuming string IDs (GUIDs as strings)
+        b.Property(x => x.MenuItemId).IsRequired().HasMaxLength(450);
 
         b.Property(x => x.IngredientId).IsRequired().HasMaxLength(450);
 

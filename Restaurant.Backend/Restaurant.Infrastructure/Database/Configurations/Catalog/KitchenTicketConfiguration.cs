@@ -1,3 +1,5 @@
+using Restaurant.Domain.Common;
+
 namespace Restaurant.Infrastructure.Database.Configurations.Identity;
 
 public sealed class KitchenTicketConfiguration : IEntityTypeConfiguration<KitchenTicket>

@@ -7,12 +7,12 @@ public class RegisterUserHandlerCommand : IRequestHandler<RegisterUserCommand, J
 {
     private readonly IAppDbContext _db;
     private readonly IJwtTokenService _jwtService;
-    private readonly IPasswordHasher<Customer> _passwordHasher;
+    private readonly IPasswordHasher<Domain.Entities.Identity.Customer> _passwordHasher;
 
     public RegisterUserHandlerCommand(
         IAppDbContext db,
         IJwtTokenService jwtService,
-        IPasswordHasher<Customer> passwordHasher
+        IPasswordHasher<Domain.Entities.Identity.Customer> passwordHasher
     )
     {
         _db = db;
@@ -36,7 +36,7 @@ public class RegisterUserHandlerCommand : IRequestHandler<RegisterUserCommand, J
             throw new ValidationException("Email is already taken");
         }
 
-        var customer = new Customer
+        var customer = new Domain.Entities.Identity.Customer
         {
             FirstName = request.Username, // Consider updating DTO to include FirstName/LastName
             LastName = "", // Consider updating DTO to include FirstName/LastName

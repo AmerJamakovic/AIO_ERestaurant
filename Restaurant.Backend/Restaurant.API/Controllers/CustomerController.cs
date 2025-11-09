@@ -16,7 +16,7 @@ namespace Restaurant.API.Controllers
 
         [HttpPut("{id}")]
         public async Task<ActionResult<UpdateCustomerDto>> Update(
-            Guid id,
+            string id,
             [FromBody] UpdateCustomerCommand command
         ) 
         {
@@ -25,7 +25,7 @@ namespace Restaurant.API.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult<DeleteCustomerDto>> Delete(Guid id)
+        public async Task<ActionResult<DeleteCustomerDto>> Delete(string id)
         {
             var customer = new DeleteCustomerCommand { Id = id.ToString() };
             return Ok(await Mediator.Send(customer));

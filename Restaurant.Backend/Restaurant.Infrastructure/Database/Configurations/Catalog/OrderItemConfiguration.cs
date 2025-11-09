@@ -11,7 +11,7 @@ public sealed class OrderItemConfiguration : IEntityTypeConfiguration<OrderItem>
         b.HasKey(x => x.Id);
 
         // Relationships
-        b.Property(x => x.OrderId).IsRequired().HasMaxLength(450); // assuming string/GUID id
+        b.Property(x => x.OrderId).IsRequired().HasMaxLength(450);
 
         b.Property(x => x.MenuItemId).IsRequired().HasMaxLength(450);
 
