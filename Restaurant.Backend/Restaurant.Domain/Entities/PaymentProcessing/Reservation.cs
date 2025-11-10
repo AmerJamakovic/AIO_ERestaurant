@@ -1,11 +1,11 @@
 using Restaurant.Domain.Entities.Catalog;
-
-namespace Restaurant.Domain.Entities.PaymentProcessing;
+using Restaurant.Domain.Common;
+using Restaurant.Domain.Entities.Identity;
 
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Restaurant.Domain.Common;
-using Restaurant.Domain.Entities.Identity;
+
+namespace Restaurant.Domain.Entities.PaymentProcessing;
 
 public class Reservation : BaseEntity
 {

@@ -1,0 +1,24 @@
+namespace Restaurant.Application.Modules.Catalog.Products.Commands.Delete;
+
+public class DeleteMenuItemCommandHandler : IRequestHandler<DeleteMenuItemCommand, bool>
+{
+    private readonly IAppDbContext _db;
+
+    public DeleteMenuItemCommandHandler(IAppDbContext db) => _db = db;
+
+    public async Task<bool> Handle(
+        DeleteMenuItemCommand request,
+        CancellationToken cancellationToken
+    )
+    {
+        var menuItem = await _db.MenuItems.FindAsync(
+            new object[] { request.Id },
+            cancellationToken
+        );
+        if (menuItem == null)
+            return false;
+        _db.MenuItems.Remove(menuItem);
+        await _db.SaveChangesAsync(cancellationToken);
+        return true;
+    }
+}

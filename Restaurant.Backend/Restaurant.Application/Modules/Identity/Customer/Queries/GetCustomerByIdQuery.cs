@@ -1,8 +1,6 @@
-namespace Restaurant.Application.Modules.Identity.Customer.Queries;
-
-using Restaurant.Application.Common.Exceptions;
 using Restaurant.Shared.Dtos.Identity;
-using Microsoft.EntityFrameworkCore;
+
+namespace Restaurant.Application.Modules.Identity.Customer.Queries;
 
 public record GetCustomerByIdQuery(string Id) : IRequest<CustomerDto>;
 

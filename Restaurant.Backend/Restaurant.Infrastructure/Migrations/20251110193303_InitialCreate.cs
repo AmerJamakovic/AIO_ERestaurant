@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Restaurant.API.Migrations
+namespace Restaurant.Infrastructure.Migrations
 {
     /// <inheritdoc />
     public partial class InitialCreate : Migration
@@ -314,7 +314,7 @@ namespace Restaurant.API.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "MenuItemIngredients",
+                name: "MenuItemsIngredients",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(26)", maxLength: 26, nullable: false),
@@ -327,15 +327,15 @@ namespace Restaurant.API.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MenuItemIngredients", x => x.Id);
+                    table.PrimaryKey("PK_MenuItemsIngredients", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_MenuItemIngredients_Ingredients_IngredientId",
+                        name: "FK_MenuItemsIngredients_Ingredients_IngredientId",
                         column: x => x.IngredientId,
                         principalTable: "Ingredients",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_MenuItemIngredients_MenuItems_MenuItemId",
+                        name: "FK_MenuItemsIngredients_MenuItems_MenuItemId",
                         column: x => x.MenuItemId,
                         principalTable: "MenuItems",
                         principalColumn: "Id",
@@ -469,19 +469,19 @@ namespace Restaurant.API.Migrations
                 column: "OrderId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_MenuItemIngredients_IngredientId",
-                table: "MenuItemIngredients",
-                column: "IngredientId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_MenuItemIngredients_MenuItemId",
-                table: "MenuItemIngredients",
-                column: "MenuItemId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_MenuItems_MenuGroupId",
                 table: "MenuItems",
                 column: "MenuGroupId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_MenuItemsIngredients_IngredientId",
+                table: "MenuItemsIngredients",
+                column: "IngredientId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_MenuItemsIngredients_MenuItemId",
+                table: "MenuItemsIngredients",
+                column: "MenuItemId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_OrderItems_MenuItemId",
@@ -562,7 +562,7 @@ namespace Restaurant.API.Migrations
                 name: "Invoices");
 
             migrationBuilder.DropTable(
-                name: "MenuItemIngredients");
+                name: "MenuItemsIngredients");
 
             migrationBuilder.DropTable(
                 name: "OrderItems");

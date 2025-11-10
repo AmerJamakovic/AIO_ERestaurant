@@ -1,13 +1,12 @@
-﻿namespace Restaurant.Domain.Common;
+﻿using System.ComponentModel.DataAnnotations;
 
-using System.ComponentModel.DataAnnotations;
-using static Ulid;
+namespace Restaurant.Domain.Common;
 
 public abstract class BaseEntity
 {
     [Key]
     [StringLength(26)]
-    public string Id { get; set; } = NewUlid().ToString();
+    public string Id { get; set; } = Ulid.NewUlid().ToString();
 
     [Required]
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;

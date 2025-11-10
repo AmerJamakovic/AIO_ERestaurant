@@ -1,7 +1,6 @@
-namespace Restaurant.Application.Modules.Identity.Customer.Validation;
-
-using FluentValidation;
 using Restaurant.Shared.Dtos.Identity;
+
+namespace Restaurant.Application.Modules.Identity.Customer.Commands.Update;
 
 public class UpdateCustomerValidator : AbstractValidator<UpdateCustomerDto>
 {

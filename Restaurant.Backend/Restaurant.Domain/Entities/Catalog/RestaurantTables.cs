@@ -1,7 +1,8 @@
-namespace Restaurant.Domain.Entities.Catalog;
+using Restaurant.Domain.Common;
 
 using System.ComponentModel.DataAnnotations;
-using Restaurant.Domain.Common;
+
+namespace Restaurant.Domain.Entities.Catalog;
 
 public class RestaurantTable : BaseEntity
 {

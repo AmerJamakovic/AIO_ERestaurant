@@ -1,18 +1,16 @@
-namespace Restaurant.Application.Modules.Identity.Customer.Commands.Create;
-
 using Restaurant.Domain.Common;
-using Restaurant.Domain.Entities.Identity;
 using Restaurant.Shared.Dtos.Identity;
-using Microsoft.EntityFrameworkCore;
+
+namespace Restaurant.Application.Modules.Identity.Customer.Commands.Create;
 
 public class CreateCustomerCommandHandler : IRequestHandler<CreateCustomerCommand, CreateCustomerDto>
 {
     private readonly IAppDbContext _context;
-    private readonly IPasswordHasher<Customer> _passwordHasher;
+    private readonly IPasswordHasher<Domain.Entities.Identity.Customer> _passwordHasher;
 
     public CreateCustomerCommandHandler(
         IAppDbContext context,
-        IPasswordHasher<Customer> passwordHasher
+        IPasswordHasher<Domain.Entities.Identity.Customer> passwordHasher
     )
     {
         _context = context;
@@ -35,7 +33,7 @@ public class CreateCustomerCommandHandler : IRequestHandler<CreateCustomerComman
             throw new ValidationException("Email is already taken");
         }
 
-        var customer = new Customer
+        var customer = new Domain.Entities.Identity.Customer
         {
             FirstName = request.FirstName,
             LastName = request.LastName,

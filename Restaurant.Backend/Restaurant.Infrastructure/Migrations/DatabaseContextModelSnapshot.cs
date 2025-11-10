@@ -3,20 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Restaurant.Infrastructure.Database;
 
 #nullable disable
 
-namespace Restaurant.API.Migrations
+namespace Restaurant.Infrastructure.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20251109204855_InitialCreate")]
-    partial class InitialCreate
+    partial class DatabaseContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -190,7 +187,7 @@ namespace Restaurant.API.Migrations
 
                     b.HasIndex("MenuItemId");
 
-                    b.ToTable("MenuItemIngredients");
+                    b.ToTable("MenuItemsIngredients");
                 });
 
             modelBuilder.Entity("Restaurant.Domain.Entities.Catalog.RestaurantTable", b =>

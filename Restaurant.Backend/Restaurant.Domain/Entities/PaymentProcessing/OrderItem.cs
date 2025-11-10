@@ -1,10 +1,10 @@
 using Restaurant.Domain.Entities.Catalog;
-
-namespace Restaurant.Domain.Entities.PaymentProcessing;
+using Restaurant.Domain.Common;
 
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Restaurant.Domain.Common;
+
+namespace Restaurant.Domain.Entities.PaymentProcessing;
 
 public class OrderItem : BaseEntity
 {

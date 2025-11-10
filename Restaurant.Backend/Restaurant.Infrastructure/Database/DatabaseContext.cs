@@ -1,6 +1,6 @@
 ﻿using Restaurant.Application.Abstractions;
-using Restaurant.Domain.Entities.Misc;
 using Restaurant.Domain.Entities.PaymentProcessing;
+using Restaurant.Domain.Entities.Misc;
 
 namespace Restaurant.Infrastructure.Database;
 
@@ -16,7 +16,7 @@ public partial class DatabaseContext : DbContext, IAppDbContext
     public DbSet<Ingredient> Ingredients => Set<Ingredient>();
     public DbSet<MenuGroup> MenuGroups => Set<MenuGroup>();
     public DbSet<MenuItem> MenuItems => Set<MenuItem>();
-    public DbSet<MenuItemIngredient> MenuItemIngredients => Set<MenuItemIngredient>();
+    public DbSet<MenuItemIngredient> MenuItemsIngredients => Set<MenuItemIngredient>();
     public DbSet<RestaurantTable> RestaurantTables => Set<RestaurantTable>();
 
     // Payment processing entities

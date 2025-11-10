@@ -1,7 +1,6 @@
-﻿namespace Restaurant.Application.Modules.Identity.Employees.Queries.GetEmployeeById
+﻿namespace Restaurant.Application.Modules.Identity.Employees.Queries.GetEmployeeById;
+
+public class GetEmployeeByIdQuery : IRequest<GetEmployeeByIdQueryDto>
 {
-    public class GetEmployeeByIdQuery : IRequest<GetEmployeeByIdQueryDto>
-    {
-        public string Id { get; set; } = null!;
-    }
+    public string Id { get; set; } = null!;
 }

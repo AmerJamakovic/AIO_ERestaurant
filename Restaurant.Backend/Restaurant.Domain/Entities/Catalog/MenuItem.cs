@@ -1,8 +1,9 @@
-namespace Restaurant.Domain.Entities.Catalog;
+using Restaurant.Domain.Common;
 
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Restaurant.Domain.Common;
+
+namespace Restaurant.Domain.Entities.Catalog;
 
 public class MenuItem : BaseEntity
 {

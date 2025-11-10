@@ -1,9 +1,10 @@
-namespace Restaurant.Domain.Entities.Catalog;
+using Restaurant.Domain.Common;
+using Restaurant.Domain.Entities.PaymentProcessing;
 
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Restaurant.Domain.Common;
-using Restaurant.Domain.Entities.PaymentProcessing;
+
+namespace Restaurant.Domain.Entities.Catalog;
 
 public class OrderTicket : BaseEntity
 {

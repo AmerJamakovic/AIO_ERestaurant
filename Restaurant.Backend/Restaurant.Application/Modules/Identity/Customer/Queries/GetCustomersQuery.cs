@@ -1,8 +1,7 @@
-namespace Restaurant.Application.Modules.Identity.Customer.Queries;
-
 using Restaurant.Application.Common;
-using Restaurant.Domain.Entities.Identity;
 using Restaurant.Shared.Dtos.Identity;
+
+namespace Restaurant.Application.Modules.Identity.Customer.Queries;
 
 public sealed class GetCustomersQuery : BasePagedQuery<CustomerDto>
 {

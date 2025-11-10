@@ -1,30 +1,36 @@
-﻿namespace Restaurant.Application.Abstractions;
-
-// Application layer
-using Restaurant.Domain.Entities.Catalog;
+﻿using Restaurant.Domain.Entities.Catalog;
 using Restaurant.Domain.Entities.Identity;
-using Microsoft.EntityFrameworkCore;
-using Restaurant.Domain.Entities.Misc;
 using Restaurant.Domain.Entities.PaymentProcessing;
+using Restaurant.Domain.Entities.Misc;
+
+namespace Restaurant.Application.Abstractions;
 
 public interface IAppDbContext
 {
-    // Catalog
-    DbSet<MenuItem> MenuItems { get; }
-    DbSet<MenuGroup> MenuGroups { get; }
-    DbSet<Order> Orders { get; }
-    DbSet<OrderItem> OrderItems { get; }
-    DbSet<RestaurantTable> RestaurantTables { get; }
-    DbSet<Reservation> Reservations { get; }
-    DbSet<PromoCode> PromoCodes { get; }
-    DbSet<Review> Reviews { get; }
-    DbSet<Inventory> Inventories { get; }
-    DbSet<Ingredient> Ingredients { get; }
-
     // Identity
     DbSet<Customer> Customers { get; }
     DbSet<Employee> Employees { get; }
     DbSet<RefreshTokenEntity> RefreshTokens { get; }
     DbSet<UserFavorite> UserFavorites { get; }
+
+    // Catalog
+    DbSet<Ingredient> Ingredients { get; }
+    DbSet<MenuGroup> MenuGroups { get; }
+    DbSet<MenuItem> MenuItems { get; }
+    DbSet<MenuItemIngredient> MenuItemsIngredients { get; }
+    DbSet<RestaurantTable> RestaurantTables { get; }
+
+    // Payment processing
+    DbSet<OrderItem> OrderItems { get; }
+    DbSet<Order> Orders { get; }
+    DbSet<Reservation> Reservations { get; }
+
+    // Miscellaneous
+    DbSet<Game> Games { get; }
+    DbSet<Inventory> Inventories { get; }
+    DbSet<Invoice> Invoices { get; }
+    DbSet<PromoCode> PromoCodes { get; }
+    DbSet<Review> Reviews { get; }
+
     Task<int> SaveChangesAsync(CancellationToken ct);
 }

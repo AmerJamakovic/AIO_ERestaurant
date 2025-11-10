@@ -2,6 +2,7 @@
 using Restaurant.Infrastructure.Common;
 using Restaurant.Infrastructure.Database;
 using Restaurant.Shared.Options;
+
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -17,14 +18,12 @@ public static class DependencyInjection
         IHostEnvironment env
     )
     {
-        // Typed ConnectionStrings + validation
         services
             .AddOptions<ConnectionStringsOptions>()
             .Bind(configuration.GetSection(ConnectionStringsOptions.SectionName))
             .ValidateDataAnnotations()
             .ValidateOnStart();
 
-        // DbContext: InMemory for test environments; SQL Server otherwise
         services.AddDbContext<DatabaseContext>(
             (sp, options) =>
             {
@@ -36,23 +35,18 @@ public static class DependencyInjection
                 }
 
                 var cs = sp.GetRequiredService<IOptions<ConnectionStringsOptions>>().Value.Main;
-                options.UseSqlServer(cs, b => b.MigrationsAssembly("Restaurant.API"));
+                options.UseSqlServer(cs);
             }
         );
 
-        // IAppDbContext mapping
         services.AddScoped<IAppDbContext>(sp => sp.GetRequiredService<DatabaseContext>());
 
-        // Identity hasher (use domain Customer)
         _ = services.AddScoped<IPasswordHasher<Customer>, PasswordHasher<Customer>>();
 
-        // Token service (reads JwtOptions via IOptions<JwtOptions>)
         services.AddTransient<IJwtTokenService, JwtTokenService>();
 
-        // HttpContext accessor + current user
         services.AddHttpContextAccessor();
 
-        // TimeProvider (if used in handlers/services)
         services.AddSingleton<TimeProvider>(TimeProvider.System);
 
         return services;

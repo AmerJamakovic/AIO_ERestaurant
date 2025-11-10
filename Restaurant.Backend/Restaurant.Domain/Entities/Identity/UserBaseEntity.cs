@@ -1,6 +1,8 @@
-namespace Restaurant.Domain.Entities.Identity;
-using System.ComponentModel.DataAnnotations;
 using Restaurant.Domain.Common;
+
+using System.ComponentModel.DataAnnotations;
+
+namespace Restaurant.Domain.Entities.Identity;
 
 public abstract class UserBaseEntity : BaseEntity
 {

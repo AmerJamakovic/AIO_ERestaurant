@@ -3,13 +3,13 @@ using ValidationException = FluentValidation.ValidationException;
 
 namespace Restaurant.Application.Modules.Identity.Users.Commands;
 
-public class RegisterUserHandlerCommand : IRequestHandler<RegisterUserCommand, JwtTokenPair>
+public class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommand, JwtTokenPair>
 {
     private readonly IAppDbContext _db;
     private readonly IJwtTokenService _jwtService;
     private readonly IPasswordHasher<Domain.Entities.Identity.Customer> _passwordHasher;
 
-    public RegisterUserHandlerCommand(
+    public RegisterUserCommandHandler(
         IAppDbContext db,
         IJwtTokenService jwtService,
         IPasswordHasher<Domain.Entities.Identity.Customer> passwordHasher

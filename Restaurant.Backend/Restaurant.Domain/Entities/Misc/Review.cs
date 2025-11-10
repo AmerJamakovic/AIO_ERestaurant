@@ -1,11 +1,11 @@
+using Restaurant.Domain.Common;
+using Restaurant.Domain.Entities.Identity;
 using Restaurant.Domain.Entities.Catalog;
-
-namespace Restaurant.Domain.Entities.Misc;
 
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Restaurant.Domain.Common;
-using Restaurant.Domain.Entities.Identity;
+
+namespace Restaurant.Domain.Entities.Misc;
 
 public class Review : BaseEntity
 {

@@ -1,5 +1,4 @@
-﻿// behavior
-namespace Restaurant.Application.Common.Behaviors;
+﻿namespace Restaurant.Application.Common.Behaviors;
 
 public sealed class ValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
     where TRequest : notnull

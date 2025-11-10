@@ -1,7 +1,8 @@
-namespace Restaurant.Domain.Entities.Misc;
+using Restaurant.Domain.Common;
 
 using System.ComponentModel.DataAnnotations;
-using Restaurant.Domain.Common;
+
+namespace Restaurant.Domain.Entities.Misc;
 
 public class Ingredient : BaseEntity
 {

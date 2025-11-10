@@ -1,8 +1,6 @@
-namespace Restaurant.Application.Modules.Identity.Customer.Commands.Delete;
-
-using Restaurant.Application.Common.Exceptions;
 using Restaurant.Shared.Dtos.Identity;
-using Microsoft.EntityFrameworkCore;
+
+namespace Restaurant.Application.Modules.Identity.Customer.Commands.Delete;
 
 public class DeleteCustomerCommandHandler : IRequestHandler<DeleteCustomerCommand, DeleteCustomerDto>
 {
